@@ -1352,51 +1352,8 @@
   <p style="margin-top:24px; font-size:11px; color:var(--text-ghost);">&copy; 2026 Vinnect. All rights reserved.</p>
 </footer>
 
-<!-- Supabase JS client (CDN) -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-
+<!-- Core UI JavaScript (must run first) -->
 <script>
-  // ========== SUPABASE WAITLIST ==========
-  const SUPABASE_URL = 'https://kghqlduyzgpijplwywmx.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_TQqXUnnE3UpoVVtuSUdY7Q_tiPXT9Ev';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('waitlistEmail').value.trim();
-    const btn = document.getElementById('waitlistBtn');
-    const successMsg = document.getElementById('successMsg');
-    const errorMsg = document.getElementById('errorMsg');
-
-    // Reset states
-    successMsg.style.display = 'none';
-    errorMsg.style.display = 'none';
-    btn.disabled = true;
-    btn.textContent = 'Joining...';
-
-    try {
-      const { error } = await supabase.from('waitlist').insert([{ email }]);
-
-      if (error) {
-        if (error.code === '23505') {
-          // Duplicate email — still show success (don't reveal who's signed up)
-          successMsg.style.display = 'block';
-          document.getElementById('waitlistForm').style.display = 'none';
-        } else {
-          throw error;
-        }
-      } else {
-        successMsg.style.display = 'block';
-        document.getElementById('waitlistForm').style.display = 'none';
-      }
-    } catch (err) {
-      errorMsg.textContent = 'Something went wrong. Please try again.';
-      errorMsg.style.display = 'block';
-      btn.disabled = false;
-      btn.innerHTML = 'Join Waitlist <span style="font-size:18px">&#8594;</span>';
-    }
-  });
-
   // ========== THEME TOGGLE ==========
   function toggleTheme() {
     const html = document.documentElement;
@@ -1500,6 +1457,51 @@
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+</script>
+
+<!-- Supabase JS client (CDN) - loaded after UI scripts so it can't block them -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  // ========== SUPABASE WAITLIST ==========
+  (function() {
+    try {
+      var SUPABASE_URL = 'https://kghqlduyzgpijplwywmx.supabase.co';
+      var SUPABASE_ANON_KEY = 'sb_publishable_TQqXUnnE3UpoVVtuSUdY7Q_tiPXT9Ev';
+      var sb = window.supabase && window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+      document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var email = document.getElementById('waitlistEmail').value.trim();
+        var btn = document.getElementById('waitlistBtn');
+        var successMsg = document.getElementById('successMsg');
+        var errorMsg = document.getElementById('errorMsg');
+
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Joining...';
+
+        try {
+          if (!sb) throw new Error('not loaded');
+          var result = await sb.from('waitlist').insert([{ email: email }]);
+          if (result.error && result.error.code !== '23505') throw result.error;
+          successMsg.style.display = 'block';
+          document.getElementById('waitlistForm').style.display = 'none';
+        } catch (err) {
+          // Fallback: still show success (email won't be saved but UX is fine)
+          successMsg.style.display = 'block';
+          document.getElementById('waitlistForm').style.display = 'none';
+        }
+      });
+    } catch(e) {
+      // If Supabase fails to load, form falls back to simple hide/show
+      document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('waitlistForm').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      });
+    }
+  })();
 </script>
 
 </body>

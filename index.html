@@ -2007,7 +2007,7 @@
     // ========== INTERACTIVE MOCKUP SIDEBARS ==========
     var mockupPages = {
       dashboard: '<div class="app-frame-greeting">Good morning, John. You\'ve got 4 follow-ups today.</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$12.4k</div><div class="app-frame-stat-label">Revenue This Month</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">47</div><div class="app-frame-stat-label">Interactions</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">92%</div><div class="app-frame-stat-label">Follow-Up Rate</div></div></div><div class="app-frame-activity"><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span>Follow-up call with James T. — club renewal</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — event invite</span></div></div>',
-      clients: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Clients (142)</div><div class="contact-list"><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">SM</div><div class="contact-info"><div class="contact-name">Sarah Martinez</div><div class="contact-meta">LTV $4,200 · Club Member · Last: 2 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">JT</div><div class="contact-info"><div class="contact-name">James Thompson</div><div class="contact-meta">LTV $3,800 · Non-Club · Last: 5 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div><div class="contact-info"><div class="contact-name">Lisa Kim</div><div class="contact-meta">LTV $6,100 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(248,113,113,0.15);color:#f87171;">MD</div><div class="contact-info"><div class="contact-name">Mark Davis</div><div class="contact-meta">LTV $2,400 · Club Member · Last: 12 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div></div>',
+      clients: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Clients (142)</div><div id="clientScroller" class="contact-list" style="max-height:220px;overflow:hidden;position:relative;"><div id="clientScrollInner" style="transition:transform 0.5s ease;"><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">SM</div><div class="contact-info"><div class="contact-name">Sarah Martinez</div><div class="contact-meta">LTV $4,200 · Club Member · Last: 2 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">JT</div><div class="contact-info"><div class="contact-name">James Thompson</div><div class="contact-meta">LTV $3,800 · Non-Club · Last: 5 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div><div class="contact-info"><div class="contact-name">Lisa Kim</div><div class="contact-meta">LTV $6,100 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(248,113,113,0.15);color:#f87171;">MD</div><div class="contact-info"><div class="contact-name">Mark Davis</div><div class="contact-meta">LTV $2,400 · Club Member · Last: 12 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">ER</div><div class="contact-info"><div class="contact-name">Elena Rodriguez</div><div class="contact-meta">LTV $5,800 · Club Member · Last: 3 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">TW</div><div class="contact-info"><div class="contact-name">Tom Wilson</div><div class="contact-meta">LTV $3,200 · Non-Club · Last: 7 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(168,130,255,0.15);color:#a78bfa;">AP</div><div class="contact-info"><div class="contact-name">Amy Park</div><div class="contact-meta">LTV $8,900 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">RC</div><div class="contact-info"><div class="contact-name">Robert Chen</div><div class="contact-meta">LTV $2,100 · Non-Club · Last: 14 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div></div></div>',
       activity: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Activity Log</div><div id="activityPills" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"><span class="ql-pill active" style="font-size:12px;padding:4px 10px;" data-filter="all">All</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="calls">Calls</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="tastings">Tastings</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="orders">Orders</span></div><div id="activityRows" class="app-frame-activity"><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Sarah M.</span><span style="font-size:11px;color:var(--text-muted);">2h ago</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span style="flex:1;">Call — James T.</span><span style="font-size:11px;color:var(--text-muted);">4h ago</span></div><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Lisa K.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Mark D.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span style="flex:1;">Call — Elena R.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Tom W.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div></div>',
       reports: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Reports</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$48.6k</div><div class="app-frame-stat-label">Total Revenue</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">186</div><div class="app-frame-stat-label">Total Activities</div></div></div><div style="margin-top:16px;"><div class="attr-metrics"><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$18,400</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div>Follow-ups</div><div class="attr-value">$14,200</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$9,800</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#a78bfa;"></div>Direct Orders</div><div class="attr-value">$6,200</div></div></div></div>',
       followups: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Follow-Ups</div><div class="followup-list"><div class="followup-row"><div class="followup-priority" style="background:#f87171;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div></div><div class="followup-row"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Tomorrow</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Mark Davis</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">5 days</div></div></div>',
@@ -2062,10 +2062,71 @@
           el.classList.add('mockup-animate');
         });
         main.style.opacity = '1';
-        // Start activity pill cycling if on activity page
+        // Start page-specific animations
+        if (activityCycleTimer) clearInterval(activityCycleTimer);
+        if (clientScrollTimer) clearInterval(clientScrollTimer);
         if (page === 'activity') startActivityCycle();
+        if (page === 'clients') startClientScroll();
+        if (page === 'quests') startQuestAnimation();
       }, 150);
     };
+
+    // Client list auto-scroll
+    var clientScrollTimer = null;
+    function startClientScroll() {
+      if (clientScrollTimer) clearInterval(clientScrollTimer);
+      var scrollPos = 0;
+      var rowHeight = 55; // approximate row height
+      var totalRows = 8;
+      var visibleRows = 4;
+      var maxScroll = (totalRows - visibleRows) * rowHeight;
+      clientScrollTimer = setInterval(function() {
+        var inner = document.getElementById('clientScrollInner');
+        if (!inner) { clearInterval(clientScrollTimer); return; }
+        scrollPos += rowHeight;
+        if (scrollPos > maxScroll) scrollPos = 0;
+        inner.style.transform = 'translateY(-' + scrollPos + 'px)';
+      }, 2000);
+    }
+
+    // Quest bars animate on load
+    function startQuestAnimation() {
+      // Quest bars use CSS animation via .mockup-animate class — already handled
+      // But we can also increment the counters
+      var questTimer = null;
+      if (questTimer) clearInterval(questTimer);
+      questTimer = setInterval(function() {
+        var bars = document.querySelectorAll('.quest-bar-fill');
+        if (bars.length === 0) { clearInterval(questTimer); return; }
+        bars.forEach(function(bar) {
+          var current = parseFloat(bar.style.width);
+          if (current < 100) {
+            var next = Math.min(current + (Math.random() * 8 + 3), 100);
+            bar.style.transition = 'width 0.6s ease';
+            bar.style.width = next + '%';
+            // Update counter text
+            var card = bar.closest('div[style*="padding:12px"]');
+            if (card) {
+              var counter = card.querySelector('span[style*="amber-accent"], span[style*="4ade80"]');
+              if (counter && counter.textContent !== 'Complete!') {
+                var parts = counter.textContent.split('/');
+                if (parts.length === 2) {
+                  var num = parseInt(parts[0]);
+                  var total = parseInt(parts[1]);
+                  var newNum = Math.min(Math.round(next / 100 * total), total);
+                  counter.textContent = newNum + '/' + total;
+                  if (newNum >= total) {
+                    counter.textContent = 'Complete!';
+                    counter.style.color = '#4ade80';
+                    bar.style.background = '#4ade80';
+                  }
+                }
+              }
+            }
+          }
+        });
+      }, 3000);
+    }
 
     // Activity log pill auto-cycle with filtering
     var activityCycleTimer = null;

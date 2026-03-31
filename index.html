@@ -449,50 +449,11 @@
       pointer-events: none;
     }
 
-    .hero-orb {
+    #networkCanvas {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(40px);
-    }
-
-    .hero-orb-1 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(251,191,36,0.35), transparent 70%);
-      top: 8%;
-      left: 12%;
-      animation: heroFloat1 14s ease-in-out infinite;
-    }
-
-    .hero-orb-2 {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%);
-      top: 25%;
-      right: 8%;
-      animation: heroFloat2 16s ease-in-out infinite;
-    }
-
-    .hero-orb-3 {
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(180,83,9,0.2), transparent 70%);
-      bottom: 15%;
-      left: 35%;
-      animation: heroFloat3 12s ease-in-out infinite;
-    }
-
-    @keyframes heroFloat1 { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-30px) translateX(15px); } }
-    @keyframes heroFloat2 { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(20px) translateX(-20px); } }
-    @keyframes heroFloat3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
-
-    .hero-vineyard {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 300px;
-      opacity: 0.4;
+      inset: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .hero-content {
@@ -1352,28 +1313,7 @@
       <section class="section-hero" id="hero">
         <!-- Animated background -->
         <div class="hero-bg">
-          <div class="hero-orb hero-orb-1"></div>
-          <div class="hero-orb hero-orb-2"></div>
-          <div class="hero-orb hero-orb-3"></div>
-          <!-- Abstract vineyard curves -->
-          <svg class="hero-vineyard" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="hillGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.3"/>
-                <stop offset="50%" stop-color="#4ade80" stop-opacity="0.15"/>
-                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.2"/>
-              </linearGradient>
-              <linearGradient id="hillGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.1"/>
-                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.15"/>
-              </linearGradient>
-            </defs>
-            <path d="M0,250 Q200,180 400,220 T800,190 T1200,230 T1440,200 L1440,300 L0,300 Z" fill="url(#hillGrad1)"/>
-            <path d="M0,270 Q300,200 600,250 T1100,210 T1440,240 L1440,300 L0,300 Z" fill="url(#hillGrad2)"/>
-            <!-- Subtle vine tendrils -->
-            <path d="M200,240 Q250,200 300,220 Q350,240 400,210" stroke="#fbbf24" stroke-opacity="0.08" stroke-width="1.5" fill="none"/>
-            <path d="M800,220 Q850,190 900,210 Q950,230 1000,200" stroke="#4ade80" stroke-opacity="0.06" stroke-width="1" fill="none"/>
-          </svg>
+          <canvas id="networkCanvas" aria-hidden="true"></canvas>
         </div>
 
         <!-- Hero content -->
@@ -1901,6 +1841,122 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    // ========== NETWORK PARTICLE CANVAS ==========
+    (function() {
+      var canvas = document.getElementById('networkCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var numParticles = 80;
+      var connectionDistance = 150;
+      var mouseX = -1000, mouseY = -1000;
+
+      function resize() {
+        canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1);
+        canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1);
+        ctx.scale(window.devicePixelRatio || 1, window.devicePixelRatio || 1);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Track mouse for interactive glow
+      canvas.parentElement.parentElement.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+      });
+      canvas.parentElement.parentElement.addEventListener('mouseleave', function() {
+        mouseX = -1000;
+        mouseY = -1000;
+      });
+
+      // Create particles
+      for (var i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * canvas.offsetWidth,
+          y: Math.random() * canvas.offsetHeight,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          radius: Math.random() * 2 + 1,
+          brightness: Math.random() * 0.5 + 0.3
+        });
+      }
+
+      function draw() {
+        var w = canvas.offsetWidth;
+        var h = canvas.offsetHeight;
+        ctx.clearRect(0, 0, w, h);
+
+        // Update and draw particles
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Bounce off edges
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          p.x = Math.max(0, Math.min(w, p.x));
+          p.y = Math.max(0, Math.min(h, p.y));
+
+          // Distance to mouse for interactive glow
+          var dx = p.x - mouseX;
+          var dy = p.y - mouseY;
+          var mouseDist = Math.sqrt(dx * dx + dy * dy);
+          var mouseGlow = mouseDist < 200 ? (1 - mouseDist / 200) * 0.6 : 0;
+
+          // Draw node
+          var alpha = p.brightness + mouseGlow;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius + mouseGlow * 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(251, 191, 36, ' + Math.min(alpha, 1) + ')';
+          ctx.fill();
+
+          // Glow effect on brighter/closer nodes
+          if (alpha > 0.5) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius + 4 + mouseGlow * 4, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(251, 191, 36, ' + (alpha * 0.15) + ')';
+            ctx.fill();
+          }
+        }
+
+        // Draw connections
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[i].x - particles[j].x;
+            var dy = particles[i].y - particles[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDistance) {
+              var lineAlpha = (1 - dist / connectionDistance) * 0.15;
+
+              // Brighten lines near mouse
+              var midX = (particles[i].x + particles[j].x) / 2;
+              var midY = (particles[i].y + particles[j].y) / 2;
+              var mDx = midX - mouseX;
+              var mDy = midY - mouseY;
+              var mDist = Math.sqrt(mDx * mDx + mDy * mDy);
+              if (mDist < 200) lineAlpha += (1 - mDist / 200) * 0.15;
+
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = 'rgba(251, 191, 36, ' + lineAlpha + ')';
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      // Only run on desktop
+      if (window.innerWidth > 768) {
+        draw();
+      }
+    })();
 
     // ========== INTERACTIVE MOCKUP SIDEBARS ==========
     var mockupPages = {

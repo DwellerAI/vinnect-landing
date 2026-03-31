@@ -1642,19 +1642,19 @@
             <div class="app-frame-dot" style="background:#fbbf24;"></div>
             <div class="app-frame-dot" style="background:#4ade80;"></div>
           </div>
-          <div class="feature-mockup-body" style="display:flex;flex-direction:column;gap:12px;">
+          <div class="feature-mockup-body" id="featureLogDemo" style="display:flex;flex-direction:column;gap:12px;">
             <div style="font-size:15px;font-weight:600;color:var(--text-primary);">Log Activity</div>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              <span class="ql-pill active" style="font-size:12px;padding:4px 10px;">Call</span>
-              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Tasting</span>
-              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Email</span>
-              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Order</span>
-              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Meeting</span>
+              <span class="ql-pill active" style="font-size:12px;padding:4px 10px;cursor:pointer;" data-demo="call" onmouseenter="showLogDemo(this)">Call</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;cursor:pointer;" data-demo="tasting" onmouseenter="showLogDemo(this)">Tasting</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;cursor:pointer;" data-demo="email" onmouseenter="showLogDemo(this)">Email</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;cursor:pointer;" data-demo="order" onmouseenter="showLogDemo(this)">Order</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;cursor:pointer;" data-demo="meeting" onmouseenter="showLogDemo(this)">Meeting</span>
             </div>
-            <div style="padding:8px 12px;background:var(--card);border-radius:8px;color:var(--text-muted);font-size:12px;">Great conversation about the new reserve Cab...</div>
-            <div style="display:flex;gap:8px;">
-              <span style="padding:4px 10px;background:var(--step-bg);border-radius:6px;font-size:11px;color:var(--amber-accent);">Sarah Martinez</span>
-              <span style="padding:4px 10px;background:var(--card);border-radius:6px;font-size:11px;color:var(--text-muted);">Follow up in 3 days</span>
+            <div id="logDemoNote" style="padding:8px 12px;background:var(--card);border-radius:8px;color:var(--text-muted);font-size:12px;transition:opacity 0.2s;">Great conversation about the new reserve Cab...</div>
+            <div id="logDemoMeta" style="display:flex;gap:8px;transition:opacity 0.2s;">
+              <span id="logDemoClient" style="padding:4px 10px;background:var(--step-bg);border-radius:6px;font-size:11px;color:var(--amber-accent);">Sarah Martinez</span>
+              <span id="logDemoFollowup" style="padding:4px 10px;background:var(--card);border-radius:6px;font-size:11px;color:var(--text-muted);">Follow up in 3 days</span>
             </div>
           </div>
         </div>
@@ -1905,6 +1905,28 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    // Feature log demo — hover pills to change note/client/followup
+    var logDemoData = {
+      call: { note: 'Great conversation about the new reserve Cab...', client: 'Sarah Martinez', followup: 'Follow up in 3 days' },
+      tasting: { note: 'Poured the 2022 Pinot — she loved it. 6 bottles ordered.', client: 'Lisa Kim', followup: 'Send thank you tomorrow' },
+      email: { note: 'Sent spring allocation offer — 15% club discount.', client: 'James Thompson', followup: 'Check open in 2 days' },
+      order: { note: '2 cases Reserve Cab, 1 case Chardonnay. Club pickup.', client: 'Mark Davis', followup: 'Confirm delivery Friday' },
+      meeting: { note: 'Q2 goals review with tasting room team.', client: 'Vineyard Team', followup: 'Share notes by EOD' }
+    };
+    window.showLogDemo = function(pill) {
+      var demo = pill.getAttribute('data-demo');
+      var data = logDemoData[demo];
+      if (!data) return;
+      // Update active pill
+      var container = pill.parentElement;
+      container.querySelectorAll('.ql-pill').forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      // Update content
+      document.getElementById('logDemoNote').textContent = data.note;
+      document.getElementById('logDemoClient').textContent = data.client;
+      document.getElementById('logDemoFollowup').textContent = data.followup;
+    };
 
     // Quick-log pill cycling
     (function() {

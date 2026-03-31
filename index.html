@@ -1349,44 +1349,14 @@
               <div class="app-frame-dot" style="background:#4ade80;"></div>
             </div>
             <div class="app-frame-body">
-              <div class="app-frame-sidebar hide-mobile">
-                <div class="app-frame-sidebar-item active">Dashboard</div>
-                <div class="app-frame-sidebar-item">Clients</div>
-                <div class="app-frame-sidebar-item">Activity Log</div>
-                <div class="app-frame-sidebar-item">Reports</div>
-                <div class="app-frame-sidebar-item">Follow-Ups</div>
+              <div class="app-frame-sidebar hide-mobile" id="heroSidebar">
+                <div class="app-frame-sidebar-item active" onmouseenter="showMockupPage('hero','dashboard')">Dashboard</div>
+                <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('hero','clients')">Clients</div>
+                <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('hero','activity')">Activity Log</div>
+                <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('hero','reports')">Reports</div>
+                <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('hero','followups')">Follow-Ups</div>
               </div>
-              <div class="app-frame-main">
-                <div class="app-frame-greeting">Good morning, John. You've got 4 follow-ups today.</div>
-                <div class="app-frame-stats">
-                  <div class="app-frame-stat">
-                    <div class="app-frame-stat-value">$12.4k</div>
-                    <div class="app-frame-stat-label">Revenue This Month</div>
-                  </div>
-                  <div class="app-frame-stat">
-                    <div class="app-frame-stat-value">47</div>
-                    <div class="app-frame-stat-label">Interactions Logged</div>
-                  </div>
-                  <div class="app-frame-stat">
-                    <div class="app-frame-stat-value">92%</div>
-                    <div class="app-frame-stat-label">Follow-Up Rate</div>
-                  </div>
-                </div>
-                <div class="app-frame-activity">
-                  <div class="app-frame-activity-row">
-                    <div class="app-frame-activity-dot" style="background:#4ade80;"></div>
-                    <span>Tasting with Sarah M. — Pinot Noir flight</span>
-                  </div>
-                  <div class="app-frame-activity-row">
-                    <div class="app-frame-activity-dot" style="background:#fbbf24;"></div>
-                    <span>Follow-up call with James T. — club renewal</span>
-                  </div>
-                  <div class="app-frame-activity-row">
-                    <div class="app-frame-activity-dot" style="background:#60a5fa;"></div>
-                    <span>Email sent to Lisa K. — event invite</span>
-                  </div>
-                </div>
-              </div>
+              <div class="app-frame-main" id="heroMain" style="transition:opacity 0.2s;"></div>
             </div>
           </div>
           <div class="hero-ellipse"></div>
@@ -1572,42 +1542,16 @@
           <div class="app-frame-dot" style="background:#4ade80;"></div>
         </div>
         <div class="app-frame-body">
-          <div class="app-frame-sidebar hide-mobile">
-            <div class="app-frame-sidebar-item active">Dashboard</div>
-            <div class="app-frame-sidebar-item">Clients</div>
-            <div class="app-frame-sidebar-item">Activity Log</div>
-            <div class="app-frame-sidebar-item">Reports</div>
-            <div class="app-frame-sidebar-item">Follow-Ups</div>
-            <div class="app-frame-sidebar-item">Quests</div>
-            <div class="app-frame-sidebar-item">Settings</div>
+          <div class="app-frame-sidebar hide-mobile" id="dashSidebar">
+            <div class="app-frame-sidebar-item active" onmouseenter="showMockupPage('dash','dashboard')">Dashboard</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','clients')">Clients</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','activity')">Activity Log</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','reports')">Reports</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','followups')">Follow-Ups</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','quests')">Quests</div>
+            <div class="app-frame-sidebar-item" onmouseenter="showMockupPage('dash','settings')">Settings</div>
           </div>
-          <div class="app-frame-main">
-            <div class="app-frame-greeting">Good morning, John. You've got 4 follow-ups today — let's make them count.</div>
-            <div class="app-frame-stats">
-              <div class="app-frame-stat">
-                <div class="app-frame-stat-value">$18.2k</div>
-                <div class="app-frame-stat-label">Revenue This Month</div>
-              </div>
-              <div class="app-frame-stat">
-                <div class="app-frame-stat-value">63</div>
-                <div class="app-frame-stat-label">Interactions</div>
-              </div>
-              <div class="app-frame-stat">
-                <div class="app-frame-stat-value">94%</div>
-                <div class="app-frame-stat-label">Follow-Up Rate</div>
-              </div>
-              <div class="app-frame-stat">
-                <div class="app-frame-stat-value">12</div>
-                <div class="app-frame-stat-label">New Clients</div>
-              </div>
-            </div>
-            <div class="app-frame-activity">
-              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight, 6 bottles ordered</span></div>
-              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span>Follow-up call with James T. — club renewal confirmed</span></div>
-              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — spring event invite</span></div>
-              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span>Meeting with vineyard team — Q2 goals review</span></div>
-            </div>
-          </div>
+          <div class="app-frame-main" id="dashMain" style="transition:opacity 0.2s;"></div>
         </div>
       </div>
     </div>
@@ -1905,6 +1849,37 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    // ========== INTERACTIVE MOCKUP SIDEBARS ==========
+    var mockupPages = {
+      dashboard: '<div class="app-frame-greeting">Good morning, John. You\'ve got 4 follow-ups today.</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$12.4k</div><div class="app-frame-stat-label">Revenue This Month</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">47</div><div class="app-frame-stat-label">Interactions</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">92%</div><div class="app-frame-stat-label">Follow-Up Rate</div></div></div><div class="app-frame-activity"><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span>Follow-up call with James T. — club renewal</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — event invite</span></div></div>',
+      clients: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Clients (142)</div><div class="contact-list"><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">SM</div><div class="contact-info"><div class="contact-name">Sarah Martinez</div><div class="contact-meta">LTV $4,200 · Club Member · Last: 2 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">JT</div><div class="contact-info"><div class="contact-name">James Thompson</div><div class="contact-meta">LTV $3,800 · Non-Club · Last: 5 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div><div class="contact-info"><div class="contact-name">Lisa Kim</div><div class="contact-meta">LTV $6,100 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(248,113,113,0.15);color:#f87171;">MD</div><div class="contact-info"><div class="contact-name">Mark Davis</div><div class="contact-meta">LTV $2,400 · Club Member · Last: 12 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div></div>',
+      activity: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Activity Log</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"><span class="ql-pill active" style="font-size:12px;padding:4px 10px;">All</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;">Calls</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;">Tastings</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;">Orders</span></div><div class="app-frame-activity"><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Sarah M.</span><span style="font-size:11px;color:var(--text-muted);">2h ago</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span style="flex:1;">Call — James T.</span><span style="font-size:11px;color:var(--text-muted);">4h ago</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span style="flex:1;">Email — Lisa K.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Mark D.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div></div>',
+      reports: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Reports</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$48.6k</div><div class="app-frame-stat-label">Total Revenue</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">186</div><div class="app-frame-stat-label">Total Activities</div></div></div><div style="margin-top:16px;"><div class="attr-metrics"><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$18,400</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div>Follow-ups</div><div class="attr-value">$14,200</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$9,800</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#a78bfa;"></div>Direct Orders</div><div class="attr-value">$6,200</div></div></div></div>',
+      followups: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Follow-Ups</div><div class="followup-list"><div class="followup-row"><div class="followup-priority" style="background:#f87171;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div></div><div class="followup-row"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Tomorrow</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Mark Davis</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">5 days</div></div></div>',
+      quests: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Quests</div><div style="display:flex;flex-direction:column;gap:12px;"><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Log 5 Tastings This Week</span><span style="font-size:12px;color:var(--amber-accent);">3/5</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div style="width:60%;height:100%;background:var(--amber-400);border-radius:3px;"></div></div></div><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Follow Up With 10 Clients</span><span style="font-size:12px;color:var(--amber-accent);">7/10</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div style="width:70%;height:100%;background:var(--amber-400);border-radius:3px;"></div></div></div><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Hit $15k Revenue</span><span style="font-size:12px;color:#4ade80;">Complete!</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div style="width:100%;height:100%;background:#4ade80;border-radius:3px;"></div></div></div></div>',
+      settings: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Settings</div><div style="display:flex;flex-direction:column;gap:12px;"><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Commerce7 Connection</span><span style="font-size:12px;padding:3px 10px;background:rgba(74,222,128,0.15);color:#4ade80;border-radius:10px;">Connected</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Email Notifications</span><span style="font-size:12px;color:var(--amber-accent);">On</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Follow-Up Cadence</span><span style="font-size:12px;color:var(--text-muted);">Adaptive</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Dark Mode</span><span style="font-size:12px;color:var(--amber-accent);">On</span></div></div>'
+    };
+
+    // Initialize both mockups with dashboard content
+    document.getElementById('heroMain').innerHTML = mockupPages.dashboard;
+    document.getElementById('dashMain').innerHTML = mockupPages.dashboard;
+
+    window.showMockupPage = function(target, page) {
+      var sidebarId = target === 'hero' ? 'heroSidebar' : 'dashSidebar';
+      var mainId = target === 'hero' ? 'heroMain' : 'dashMain';
+      var sidebar = document.getElementById(sidebarId);
+      var main = document.getElementById(mainId);
+      // Update active sidebar item
+      sidebar.querySelectorAll('.app-frame-sidebar-item').forEach(function(item) { item.classList.remove('active'); });
+      event.target.classList.add('active');
+      // Swap content with fade
+      main.style.opacity = '0';
+      setTimeout(function() {
+        main.innerHTML = mockupPages[page] || mockupPages.dashboard;
+        main.style.opacity = '1';
+      }, 150);
+    };
 
     // Feature log demo — hover pills to change note/client/followup
     var logDemoData = {

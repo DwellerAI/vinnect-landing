@@ -1535,9 +1535,9 @@
             <div class="bento-card" data-stagger-item="bottom">
               <div class="bento-card-illustration" style="flex-direction:column;align-items:stretch;padding:12px;gap:8px;">
                 <div class="followup-row" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:6px;">
-                  <div class="followup-priority" style="background:#f87171;"></div>
-                  <div class="followup-name" style="font-size:12px;">Sarah Martinez</div>
-                  <div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;font-size:10px;">Overdue</div>
+                  <div class="followup-priority" id="bentoFollowupDot" style="background:#f87171;"></div>
+                  <div class="followup-name" id="bentoFollowupName" style="font-size:12px;">Sarah Martinez</div>
+                  <div class="followup-days" id="bentoFollowupTag" style="background:rgba(248,113,113,0.15);color:#f87171;font-size:10px;">Overdue</div>
                 </div>
                 <div style="background:var(--surface);border-radius:6px;padding:8px;border:1px solid var(--border);">
                   <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
@@ -2130,34 +2130,67 @@
       }, 3000);
     }
 
-    // Bento card follow-up draft typing (triggered on scroll into view)
+    // Bento card follow-up draft typing — cycles through 3 clients
     (function() {
       var bentoDraft = document.getElementById('bentoDraft');
-      if (!bentoDraft) return;
-      var msg = "Hey Sarah! Just wanted to check in — how was the Pinot from last week? Hope you and David enjoyed it. Let me know if you need anything! 🍷";
-      var typed = false;
+      var bentoName = document.getElementById('bentoFollowupName');
+      var bentoTag = document.getElementById('bentoFollowupTag');
+      var bentoDot = document.getElementById('bentoFollowupDot');
+      if (!bentoDraft || !bentoName) return;
+
+      var clients = [
+        { name: 'Sarah Martinez', tag: 'Overdue', tagBg: 'rgba(248,113,113,0.15)', tagColor: '#f87171', dotColor: '#f87171',
+          msg: "Hey Sarah! Just wanted to check in — how was the Pinot from last week? Hope you and David enjoyed it. Let me know if you need anything!" },
+        { name: 'James Thompson', tag: '2 days', tagBg: 'rgba(251,191,36,0.15)', tagColor: '#fbbf24', dotColor: '#fbbf24',
+          msg: "Hi James! Thanks again for joining the club last month. Just wanted to see how you're enjoying the first shipment — any favorites so far?" },
+        { name: 'Lisa Kim', tag: '5 days', tagBg: 'rgba(74,222,128,0.15)', tagColor: '#4ade80', dotColor: '#4ade80',
+          msg: "Hey Lisa! It's been a little while — hope all is well. We have a few new releases I think you'd love. Want me to save you a spot at the next tasting?" }
+      ];
+      var clientIdx = 0;
+      var isVisible = false;
+      var cycling = false;
+
+      function typeClient() {
+        var client = clients[clientIdx];
+        // Update client info
+        bentoName.textContent = client.name;
+        bentoTag.textContent = client.tag;
+        bentoTag.style.background = client.tagBg;
+        bentoTag.style.color = client.tagColor;
+        bentoDot.style.background = client.dotColor;
+        // Type the message
+        var i = 0;
+        bentoDraft.textContent = '';
+        bentoDraft.style.borderRight = '1px solid var(--amber-accent)';
+        function type() {
+          if (i < client.msg.length) {
+            bentoDraft.textContent += client.msg.charAt(i);
+            i++;
+            setTimeout(type, 18 + Math.random() * 22);
+          } else {
+            setTimeout(function() { bentoDraft.style.borderRight = 'none'; }, 1200);
+            // Pause, then move to next client
+            setTimeout(function() {
+              clientIdx = (clientIdx + 1) % clients.length;
+              if (isVisible) typeClient();
+            }, 4000);
+          }
+        }
+        setTimeout(type, 500);
+      }
+
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting && !typed) {
-            typed = true;
-            var i = 0;
-            bentoDraft.textContent = '';
-            bentoDraft.style.borderRight = '1px solid var(--amber-accent)';
-            function type() {
-              if (i < msg.length) {
-                bentoDraft.textContent += msg.charAt(i);
-                i++;
-                setTimeout(type, 20 + Math.random() * 25);
-              } else {
-                setTimeout(function() { bentoDraft.style.borderRight = 'none'; }, 1500);
-                // Reset after a pause so it replays if they scroll back
-                setTimeout(function() { typed = false; bentoDraft.textContent = ''; }, 8000);
-              }
-            }
-            setTimeout(type, 400);
+          if (entry.isIntersecting && !cycling) {
+            isVisible = true;
+            cycling = true;
+            typeClient();
+          } else if (!entry.isIntersecting) {
+            isVisible = false;
+            cycling = false;
           }
         });
-      }, { threshold: 0.5 });
+      }, { threshold: 0.3 });
       observer.observe(bentoDraft.closest('.bento-card'));
     })();
 

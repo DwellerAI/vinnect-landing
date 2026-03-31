@@ -1533,23 +1533,23 @@
 
             <!-- Card 4: Smart Follow-Ups -->
             <div class="bento-card" data-stagger-item="bottom">
-              <div class="bento-card-illustration">
-                <div class="followup-list">
-                  <div class="followup-row">
-                    <div class="followup-priority" style="background:#f87171;"></div>
-                    <div class="followup-name">Sarah Martinez</div>
-                    <div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div>
+              <div class="bento-card-illustration" style="flex-direction:column;align-items:stretch;padding:12px;gap:8px;">
+                <div class="followup-row" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:6px;">
+                  <div class="followup-priority" style="background:#f87171;"></div>
+                  <div class="followup-name" style="font-size:12px;">Sarah Martinez</div>
+                  <div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;font-size:10px;">Overdue</div>
+                </div>
+                <div style="background:var(--surface);border-radius:6px;padding:8px;border:1px solid var(--border);">
+                  <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span style="font-size:10px;font-weight:600;color:var(--amber-accent);">AI Draft</span>
                   </div>
-                  <div class="followup-row">
-                    <div class="followup-priority" style="background:#fbbf24;"></div>
-                    <div class="followup-name">James Thompson</div>
-                    <div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">2 days</div>
-                  </div>
-                  <div class="followup-row">
-                    <div class="followup-priority" style="background:#4ade80;"></div>
-                    <div class="followup-name">Lisa Kim</div>
-                    <div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">5 days</div>
-                  </div>
+                  <div id="bentoDraft" style="font-size:11px;color:var(--text-secondary);line-height:1.4;min-height:32px;"></div>
+                </div>
+                <div class="followup-row" style="opacity:0.5;">
+                  <div class="followup-priority" style="background:#fbbf24;"></div>
+                  <div class="followup-name" style="font-size:12px;">James Thompson</div>
+                  <div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:10px;">2 days</div>
                 </div>
               </div>
               <div class="bento-card-body">
@@ -1557,7 +1557,7 @@
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <h3>Smart Follow-Ups</h3>
-                <p>AI-suggested follow-up timing based on client behavior. Never lose touch with anyone again.</p>
+                <p>AI drafts personalized outreach for every follow-up. Just review, tap send.</p>
               </div>
             </div>
           </div>
@@ -2129,6 +2129,37 @@
         });
       }, 3000);
     }
+
+    // Bento card follow-up draft typing (triggered on scroll into view)
+    (function() {
+      var bentoDraft = document.getElementById('bentoDraft');
+      if (!bentoDraft) return;
+      var msg = "Hey Sarah! The Reserve Cab you loved is back in stock — want me to hold a case? 🍷";
+      var typed = false;
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !typed) {
+            typed = true;
+            var i = 0;
+            bentoDraft.textContent = '';
+            bentoDraft.style.borderRight = '1px solid var(--amber-accent)';
+            function type() {
+              if (i < msg.length) {
+                bentoDraft.textContent += msg.charAt(i);
+                i++;
+                setTimeout(type, 20 + Math.random() * 25);
+              } else {
+                setTimeout(function() { bentoDraft.style.borderRight = 'none'; }, 1500);
+                // Reset after a pause so it replays if they scroll back
+                setTimeout(function() { typed = false; bentoDraft.textContent = ''; }, 8000);
+              }
+            }
+            setTimeout(type, 400);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(bentoDraft.closest('.bento-card'));
+    })();
 
     // Follow-up draft typing animation
     var draftTypingTimer = null;

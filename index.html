@@ -10,71 +10,76 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
 
-    /* ========== AMBER PALETTE CONSTANTS ========== */
+    /* ========== VINTAGE ACADEMIA PALETTE ========== */
     :root {
-      --amber-50: #FFFBEB;
-      --amber-100: #FEF3C7;
-      --amber-200: #FDE68A;
-      --amber-300: #FCD34D;
-      --amber-400: #FBBF24;
-      --amber-500: #D4A017;
-      --amber-600: #B8860B;
+      --amber-50: #f5efe6;
+      --amber-100: #e8dcc8;
+      --amber-200: #d5b893;
+      --amber-300: #c9a77a;
+      --amber-400: #D5B893;
+      --amber-500: #6F4D38;
+      --amber-600: #5a3d2b;
+      --navy: #25344F;
+      --slate: #617891;
+      --tan: #D5B893;
+      --coffee: #6F4D38;
+      --wine-red: #632024;
     }
 
     /* ========== DARK THEME (DEFAULT) ========== */
     [data-theme="dark"] {
-      --bg: #09090b;
-      --bg-alt: #18181b;
-      --surface: #1c1c20;
-      --card: #27272a;
-      --border: rgba(251, 191, 36, 0.2);
-      --border-hover: rgba(251, 191, 36, 0.4);
-      --text-primary: #fafaf9;
-      --text-secondary: #d4d4d8;
-      --text-muted: #a1a1aa;
-      --nav-bg: rgba(9, 9, 11, 0.88);
-      --nav-border: rgba(251, 191, 36, 0.15);
-      --input-bg: rgba(0, 0, 0, 0.4);
-      --badge-bg: rgba(251, 191, 36, 0.15);
-      --badge-border: rgba(251, 191, 36, 0.35);
-      --pill-border: #3f3f46;
-      --pill-text: #d4d4d8;
-      --pill-active-bg: rgba(251, 191, 36, 0.12);
-      --pill-active-border: var(--amber-400);
-      --pill-active-text: var(--amber-400);
-      --step-bg: rgba(251, 191, 36, 0.1);
-      --card-glow: rgba(251, 191, 36, 0.12);
-      --shadow-soft: rgba(0, 0, 0, 0.25);
+      --bg: #1a2235;
+      --bg-alt: #1f2940;
+      --surface: #243050;
+      --card: #2a3658;
+      --border: rgba(213, 184, 147, 0.2);
+      --border-hover: rgba(213, 184, 147, 0.4);
+      --text-primary: #f0ebe3;
+      --text-secondary: #b8c4d4;
+      --text-muted: #7a8da4;
+      --nav-bg: rgba(26, 34, 53, 0.92);
+      --nav-border: rgba(213, 184, 147, 0.15);
+      --input-bg: rgba(0, 0, 0, 0.3);
+      --badge-bg: rgba(213, 184, 147, 0.12);
+      --badge-border: rgba(213, 184, 147, 0.3);
+      --pill-border: #3a4a6a;
+      --pill-text: #b8c4d4;
+      --pill-active-bg: rgba(213, 184, 147, 0.12);
+      --pill-active-border: var(--tan);
+      --pill-active-text: var(--tan);
+      --step-bg: rgba(213, 184, 147, 0.1);
+      --card-glow: rgba(213, 184, 147, 0.1);
+      --shadow-soft: rgba(0, 0, 0, 0.3);
       --shadow-med: rgba(0, 0, 0, 0.5);
-      --amber-accent: var(--amber-400);
+      --amber-accent: var(--tan);
     }
 
     /* ========== LIGHT THEME ========== */
     [data-theme="light"] {
-      --bg: #fafaf9;
-      --bg-alt: #f5f5f4;
-      --surface: #ffffff;
-      --card: #f5f5f4;
-      --border: #d6d3d1;
-      --border-hover: #a8a29e;
-      --text-primary: #1c1917;
-      --text-secondary: #57534e;
-      --text-muted: #78716c;
-      --nav-bg: rgba(250, 250, 249, 0.9);
-      --nav-border: #e7e5e4;
-      --input-bg: #f5f5f4;
-      --badge-bg: rgba(251, 191, 36, 0.08);
-      --badge-border: rgba(180, 120, 0, 0.3);
-      --pill-border: #d6d3d1;
-      --pill-text: #57534e;
-      --pill-active-bg: rgba(251, 191, 36, 0.08);
-      --pill-active-border: var(--amber-500);
-      --pill-active-text: var(--amber-600);
-      --step-bg: rgba(251, 191, 36, 0.08);
-      --card-glow: rgba(251, 191, 36, 0.05);
-      --shadow-soft: rgba(0, 0, 0, 0.05);
-      --shadow-med: rgba(0, 0, 0, 0.1);
-      --amber-accent: var(--amber-600);
+      --bg: #f5efe6;
+      --bg-alt: #ede5d8;
+      --surface: #faf7f2;
+      --card: #f0ebe3;
+      --border: #d5c9b8;
+      --border-hover: #b8a48e;
+      --text-primary: #25344F;
+      --text-secondary: #4a5568;
+      --text-muted: #7a8da4;
+      --nav-bg: rgba(245, 239, 230, 0.92);
+      --nav-border: #d5c9b8;
+      --input-bg: #f0ebe3;
+      --badge-bg: rgba(111, 77, 56, 0.08);
+      --badge-border: rgba(111, 77, 56, 0.25);
+      --pill-border: #d5c9b8;
+      --pill-text: #4a5568;
+      --pill-active-bg: rgba(111, 77, 56, 0.08);
+      --pill-active-border: var(--coffee);
+      --pill-active-text: var(--coffee);
+      --step-bg: rgba(111, 77, 56, 0.08);
+      --card-glow: rgba(111, 77, 56, 0.05);
+      --shadow-soft: rgba(0, 0, 0, 0.06);
+      --shadow-med: rgba(0, 0, 0, 0.12);
+      --amber-accent: var(--coffee);
     }
 
     /* ========== GLOBAL RESET ========== */
@@ -106,9 +111,9 @@
       inset: 0;
       z-index: -2;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(251,191,36,0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(180,83,9,0.03) 0%, transparent 40%),
-        radial-gradient(ellipse at 20% 60%, rgba(251,191,36,0.02) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 0%, rgba(213,184,147,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(111,77,56,0.03) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 60%, rgba(213,184,147,0.02) 0%, transparent 40%);
       pointer-events: none;
     }
     body::after { display: none; /* replaced by .noise-overlay SVG */
@@ -128,8 +133,8 @@
     }
     [data-theme="light"] body::before {
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(251,191,36,0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(180,83,9,0.02) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 0%, rgba(213,184,147,0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(111,77,56,0.02) 0%, transparent 40%);
     }
     [data-theme="light"] .noise-overlay {
       opacity: 0.03;
@@ -189,8 +194,8 @@
       gap: 8px;
       padding: 12px 24px;
       border-radius: 10px;
-      background: var(--amber-400);
-      color: #1c1917;
+      background: var(--tan);
+      color: var(--navy);
       font-family: 'Montserrat', sans-serif;
       font-size: 14px;
       font-weight: 600;
@@ -762,13 +767,13 @@
     .bento-card-wrap {
       border-radius: 24px;
       padding: 2px;
-      background: linear-gradient(135deg, rgba(251,191,36,0.3), rgba(251,191,36,0.08) 40%, rgba(217,119,6,0.2) 70%, rgba(251,191,36,0.15));
+      background: linear-gradient(135deg, rgba(213,184,147,0.3), rgba(213,184,147,0.08) 40%, rgba(111,77,56,0.2) 70%, rgba(213,184,147,0.15));
       transition: all 0.3s;
       cursor: pointer;
     }
     .bento-card-wrap:hover {
       transform: translateY(-4px);
-      box-shadow: 0 0 40px rgba(251,191,36,0.1), 0 0 80px rgba(251,191,36,0.03);
+      box-shadow: 0 0 40px rgba(213,184,147,0.1), 0 0 80px rgba(213,184,147,0.03);
     }
     .bento-card {
       background: #0c0c10;
@@ -776,7 +781,7 @@
       overflow: hidden;
     }
     [data-theme="light"] .bento-card-wrap {
-      background: linear-gradient(135deg, rgba(251,191,36,0.4), rgba(251,191,36,0.1) 40%, rgba(217,119,6,0.25) 70%, rgba(251,191,36,0.2));
+      background: linear-gradient(135deg, rgba(213,184,147,0.4), rgba(213,184,147,0.1) 40%, rgba(111,77,56,0.25) 70%, rgba(213,184,147,0.2));
     }
     [data-theme="light"] .bento-card {
       background: #ffffff;
@@ -785,14 +790,14 @@
       height: 260px;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(251,191,36,0.03) 0%, transparent 60%);
+      background: linear-gradient(180deg, rgba(213,184,147,0.03) 0%, transparent 60%);
       padding: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     [data-theme="light"] .bento-card-illustration {
-      background: linear-gradient(180deg, rgba(251,191,36,0.04) 0%, transparent 60%);
+      background: linear-gradient(180deg, rgba(213,184,147,0.04) 0%, transparent 60%);
     }
     /* Inner elements stagger in when card enters viewport */
     .bento-card-illustration .ql-pill,
@@ -835,7 +840,7 @@
     .bento-card-icon {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(251,191,36,0.05));
+      background: linear-gradient(135deg, rgba(213,184,147,0.2), rgba(213,184,147,0.05));
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -843,11 +848,11 @@
       margin-bottom: 12px;
       color: var(--amber-accent);
       transition: transform 0.2s;
-      box-shadow: 0 0 20px rgba(251,191,36,0.1);
+      box-shadow: 0 0 20px rgba(213,184,147,0.1);
     }
     [data-theme="light"] .bento-card-icon {
-      background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(251,191,36,0.05));
-      box-shadow: 0 0 15px rgba(251,191,36,0.08);
+      background: linear-gradient(135deg, rgba(213,184,147,0.15), rgba(213,184,147,0.05));
+      box-shadow: 0 0 15px rgba(213,184,147,0.08);
     }
     .bento-card:hover .bento-card-icon { transform: scale(1.1); }
     .bento-card-body h3 { margin-bottom: 8px; }
@@ -1002,7 +1007,7 @@
       display: inline-block;
       padding: 4px 14px;
       border-radius: 20px;
-      background: rgba(251,191,36,0.1);
+      background: rgba(213,184,147,0.1);
       color: var(--amber-accent);
       font-size: 12px;
       font-weight: 600;
@@ -1435,7 +1440,7 @@
           <div class="app-frame">
             <div class="app-frame-titlebar">
               <div class="app-frame-dot" style="background:#ef4444;"></div>
-              <div class="app-frame-dot" style="background:#fbbf24;"></div>
+              <div class="app-frame-dot" style="background:#D5B893;"></div>
               <div class="app-frame-dot" style="background:#4ade80;"></div>
             </div>
             <div class="app-frame-body">
@@ -1526,7 +1531,7 @@
                     <div class="attr-value">$<span class="count-up" data-target="12400">0</span></div>
                   </div>
                   <div class="attr-row">
-                    <div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div> Follow-ups</div>
+                    <div class="attr-label"><div class="attr-dot" style="background:#D5B893;"></div> Follow-ups</div>
                     <div class="attr-value">$<span class="count-up" data-target="8200">0</span></div>
                   </div>
                   <div class="attr-row">
@@ -1534,7 +1539,7 @@
                     <div class="attr-value">$<span class="count-up" data-target="4800">0</span></div>
                   </div>
                   <div class="attr-row">
-                    <div class="attr-label"><div class="attr-dot" style="background:#f87171;"></div> Samples</div>
+                    <div class="attr-label"><div class="attr-dot" style="background:#632024;"></div> Samples</div>
                     <div class="attr-value">$<span class="count-up" data-target="2100">0</span></div>
                   </div>
                 </div>
@@ -1555,7 +1560,7 @@
               <div class="bento-card-illustration">
                 <div class="contact-list">
                   <div class="contact-row">
-                    <div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">SM</div>
+                    <div class="contact-avatar" style="background:rgba(213,184,147,0.15);color:#D5B893;">SM</div>
                     <div class="contact-info">
                       <div class="contact-name">Sarah Martinez</div>
                       <div class="contact-meta">LTV $4,200 · Last: 2 days ago</div>
@@ -1568,7 +1573,7 @@
                       <div class="contact-name">James Thompson</div>
                       <div class="contact-meta">LTV $3,800 · Last: 5 days ago</div>
                     </div>
-                    <div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div>
+                    <div class="contact-tag" style="background:rgba(213,184,147,0.15);color:#D5B893;">Follow-up</div>
                   </div>
                   <div class="contact-row">
                     <div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div>
@@ -1594,10 +1599,10 @@
             <div class="bento-card-wrap" data-stagger-item="bottom">
             <div class="bento-card">
               <div class="bento-card-illustration" style="flex-direction:column;align-items:stretch;padding:12px;gap:8px;">
-                <div class="followup-row" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:6px;">
-                  <div class="followup-priority" id="bentoFollowupDot" style="background:#f87171;"></div>
+                <div class="followup-row" style="background:rgba(213,184,147,0.06);border:1px solid rgba(213,184,147,0.15);border-radius:6px;">
+                  <div class="followup-priority" id="bentoFollowupDot" style="background:#632024;"></div>
                   <div class="followup-name" id="bentoFollowupName" style="font-size:12px;">Sarah Martinez</div>
-                  <div class="followup-days" id="bentoFollowupTag" style="background:rgba(248,113,113,0.15);color:#f87171;font-size:10px;">Overdue</div>
+                  <div class="followup-days" id="bentoFollowupTag" style="background:rgba(99,32,36,0.2);color:#943030;font-size:10px;">Overdue</div>
                 </div>
                 <div style="background:var(--surface);border-radius:6px;padding:8px;border:1px solid var(--border);">
                   <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
@@ -1607,9 +1612,9 @@
                   <div id="bentoDraft" style="font-size:11px;color:var(--text-secondary);line-height:1.4;min-height:32px;"></div>
                 </div>
                 <div class="followup-row" style="opacity:0.4;">
-                  <div class="followup-priority" id="bentoNextDot" style="background:#fbbf24;"></div>
+                  <div class="followup-priority" id="bentoNextDot" style="background:#D5B893;"></div>
                   <div class="followup-name" id="bentoNextName" style="font-size:12px;">James Thompson</div>
-                  <div class="followup-days" id="bentoNextTag" style="background:rgba(251,191,36,0.15);color:#fbbf24;font-size:10px;">2 days</div>
+                  <div class="followup-days" id="bentoNextTag" style="background:rgba(213,184,147,0.15);color:#D5B893;font-size:10px;">2 days</div>
                 </div>
               </div>
               <div class="bento-card-body">
@@ -1636,7 +1641,7 @@
       <div class="app-frame">
         <div class="app-frame-titlebar">
           <div class="app-frame-dot" style="background:#ef4444;"></div>
-          <div class="app-frame-dot" style="background:#fbbf24;"></div>
+          <div class="app-frame-dot" style="background:#D5B893;"></div>
           <div class="app-frame-dot" style="background:#4ade80;"></div>
         </div>
         <div class="app-frame-body">
@@ -1717,7 +1722,7 @@
             <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Sales Attribution</div>
             <div class="attr-metrics">
               <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$12,400</div></div>
-              <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div>Follow-ups</div><div class="attr-value">$8,200</div></div>
+              <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#D5B893;"></div>Follow-ups</div><div class="attr-value">$8,200</div></div>
               <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$4,800</div></div>
             </div>
             <div style="margin-top:12px;padding:8px 12px;background:var(--step-bg);border-radius:8px;font-size:12px;color:var(--amber-accent);">Tastings drive 49% of your revenue this month</div>
@@ -1745,8 +1750,8 @@
           <div class="feature-mockup-body">
             <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Follow-Up Queue</div>
             <div class="followup-list">
-              <div class="followup-row"><div class="followup-priority" style="background:#f87171;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div></div>
-              <div class="followup-row"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Tomorrow</div></div>
+              <div class="followup-row"><div class="followup-priority" style="background:#632024;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(99,32,36,0.2);color:#943030;">Overdue</div></div>
+              <div class="followup-row"><div class="followup-priority" style="background:#D5B893;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(213,184,147,0.15);color:#D5B893;">Tomorrow</div></div>
               <div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div>
             </div>
           </div>
@@ -2002,14 +2007,14 @@
           var alpha = p.brightness + mouseGlow;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius + mouseGlow * 2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(251, 191, 36, ' + Math.min(alpha, 1) + ')';
+          ctx.fillStyle = 'rgba(213, 184, 147, ' + Math.min(alpha, 1) + ')';
           ctx.fill();
 
           // Glow effect on brighter/closer nodes
           if (alpha > 0.5) {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius + 4 + mouseGlow * 4, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(251, 191, 36, ' + (alpha * 0.15) + ')';
+            ctx.fillStyle = 'rgba(213, 184, 147, ' + (alpha * 0.15) + ')';
             ctx.fill();
           }
         }
@@ -2034,7 +2039,7 @@
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(251, 191, 36, ' + lineAlpha + ')';
+              ctx.strokeStyle = 'rgba(213, 184, 147, ' + lineAlpha + ')';
               ctx.lineWidth = 0.8;
               ctx.stroke();
             }
@@ -2052,11 +2057,11 @@
 
     // ========== INTERACTIVE MOCKUP SIDEBARS ==========
     var mockupPages = {
-      dashboard: '<div class="app-frame-greeting">Good morning, John. You\'ve got 4 follow-ups today.</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$12.4k</div><div class="app-frame-stat-label">Revenue This Month</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">47</div><div class="app-frame-stat-label">Interactions</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">92%</div><div class="app-frame-stat-label">Follow-Up Rate</div></div></div><div class="app-frame-activity"><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span>Follow-up call with James T. — club renewal</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — event invite</span></div></div>',
-      clients: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Clients (142)</div><div id="clientScroller" class="contact-list" style="max-height:220px;overflow:hidden;position:relative;"><div id="clientScrollInner" style="transition:transform 0.5s ease;"><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">SM</div><div class="contact-info"><div class="contact-name">Sarah Martinez</div><div class="contact-meta">LTV $4,200 · Club Member · Last: 2 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">JT</div><div class="contact-info"><div class="contact-name">James Thompson</div><div class="contact-meta">LTV $3,800 · Non-Club · Last: 5 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div><div class="contact-info"><div class="contact-name">Lisa Kim</div><div class="contact-meta">LTV $6,100 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(248,113,113,0.15);color:#f87171;">MD</div><div class="contact-info"><div class="contact-name">Mark Davis</div><div class="contact-meta">LTV $2,400 · Club Member · Last: 12 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">ER</div><div class="contact-info"><div class="contact-name">Elena Rodriguez</div><div class="contact-meta">LTV $5,800 · Club Member · Last: 3 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">TW</div><div class="contact-info"><div class="contact-name">Tom Wilson</div><div class="contact-meta">LTV $3,200 · Non-Club · Last: 7 days ago</div></div><div class="contact-tag" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(168,130,255,0.15);color:#a78bfa;">AP</div><div class="contact-info"><div class="contact-name">Amy Park</div><div class="contact-meta">LTV $8,900 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(251,191,36,0.15);color:#fbbf24;">RC</div><div class="contact-info"><div class="contact-name">Robert Chen</div><div class="contact-meta">LTV $2,100 · Non-Club · Last: 14 days ago</div></div><div class="contact-tag" style="background:rgba(248,113,113,0.15);color:#f87171;">At Risk</div></div></div></div>',
-      activity: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Activity Log</div><div id="activityPills" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"><span class="ql-pill active" style="font-size:12px;padding:4px 10px;" data-filter="all">All</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="calls">Calls</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="tastings">Tastings</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="orders">Orders</span></div><div id="activityRows" class="app-frame-activity"><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Sarah M.</span><span style="font-size:11px;color:var(--text-muted);">2h ago</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span style="flex:1;">Call — James T.</span><span style="font-size:11px;color:var(--text-muted);">4h ago</span></div><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Lisa K.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Mark D.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span style="flex:1;">Call — Elena R.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Tom W.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div></div>',
-      reports: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Reports</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$48.6k</div><div class="app-frame-stat-label">Total Revenue</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">186</div><div class="app-frame-stat-label">Total Activities</div></div></div><div style="margin-top:16px;"><div class="attr-metrics"><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$18,400</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div>Follow-ups</div><div class="attr-value">$14,200</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$9,800</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#a78bfa;"></div>Direct Orders</div><div class="attr-value">$6,200</div></div></div></div>',
-      followups: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Follow-Ups</div><div class="followup-list" style="margin-bottom:16px;"><div class="followup-row" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:8px;"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div></div><div class="followup-row"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Tomorrow</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div></div><div style="background:var(--card);border-radius:8px;padding:12px;border:1px solid var(--border);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:12px;font-weight:600;color:var(--amber-accent);">AI Draft for Sarah Martinez</span></div><div id="followupDraft" style="font-size:12px;color:var(--text-secondary);line-height:1.5;min-height:48px;"></div><div style="display:flex;gap:8px;margin-top:10px;"><span style="padding:4px 12px;background:var(--amber-400);color:#1c1917;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;">Send</span><span style="padding:4px 12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--text-muted);cursor:pointer;">Edit</span></div></div>',
+      dashboard: '<div class="app-frame-greeting">Good morning, John. You\'ve got 4 follow-ups today.</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$12.4k</div><div class="app-frame-stat-label">Revenue This Month</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">47</div><div class="app-frame-stat-label">Interactions</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">92%</div><div class="app-frame-stat-label">Follow-Up Rate</div></div></div><div class="app-frame-activity"><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#D5B893;"></div><span>Follow-up call with James T. — club renewal</span></div><div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — event invite</span></div></div>',
+      clients: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Clients (142)</div><div id="clientScroller" class="contact-list" style="max-height:220px;overflow:hidden;position:relative;"><div id="clientScrollInner" style="transition:transform 0.5s ease;"><div class="contact-row"><div class="contact-avatar" style="background:rgba(213,184,147,0.15);color:#D5B893;">SM</div><div class="contact-info"><div class="contact-name">Sarah Martinez</div><div class="contact-meta">LTV $4,200 · Club Member · Last: 2 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">JT</div><div class="contact-info"><div class="contact-name">James Thompson</div><div class="contact-meta">LTV $3,800 · Non-Club · Last: 5 days ago</div></div><div class="contact-tag" style="background:rgba(213,184,147,0.15);color:#D5B893;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">LK</div><div class="contact-info"><div class="contact-name">Lisa Kim</div><div class="contact-meta">LTV $6,100 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(99,32,36,0.2);color:#943030;">MD</div><div class="contact-info"><div class="contact-name">Mark Davis</div><div class="contact-meta">LTV $2,400 · Club Member · Last: 12 days ago</div></div><div class="contact-tag" style="background:rgba(99,32,36,0.2);color:#943030;">At Risk</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(74,222,128,0.15);color:#4ade80;">ER</div><div class="contact-info"><div class="contact-name">Elena Rodriguez</div><div class="contact-meta">LTV $5,800 · Club Member · Last: 3 days ago</div></div><div class="contact-tag" style="background:rgba(74,222,128,0.15);color:#4ade80;">Active</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">TW</div><div class="contact-info"><div class="contact-name">Tom Wilson</div><div class="contact-meta">LTV $3,200 · Non-Club · Last: 7 days ago</div></div><div class="contact-tag" style="background:rgba(213,184,147,0.15);color:#D5B893;">Follow-up</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(168,130,255,0.15);color:#a78bfa;">AP</div><div class="contact-info"><div class="contact-name">Amy Park</div><div class="contact-meta">LTV $8,900 · Club Member · Last: 1 day ago</div></div><div class="contact-tag" style="background:rgba(168,130,255,0.15);color:#a78bfa;">VIP</div></div><div class="contact-row"><div class="contact-avatar" style="background:rgba(213,184,147,0.15);color:#D5B893;">RC</div><div class="contact-info"><div class="contact-name">Robert Chen</div><div class="contact-meta">LTV $2,100 · Non-Club · Last: 14 days ago</div></div><div class="contact-tag" style="background:rgba(99,32,36,0.2);color:#943030;">At Risk</div></div></div></div>',
+      activity: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Activity Log</div><div id="activityPills" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;"><span class="ql-pill active" style="font-size:12px;padding:4px 10px;" data-filter="all">All</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="calls">Calls</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="tastings">Tastings</span><span class="ql-pill" style="font-size:12px;padding:4px 10px;" data-filter="orders">Orders</span></div><div id="activityRows" class="app-frame-activity"><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Sarah M.</span><span style="font-size:11px;color:var(--text-muted);">2h ago</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#D5B893;"></div><span style="flex:1;">Call — James T.</span><span style="font-size:11px;color:var(--text-muted);">4h ago</span></div><div class="app-frame-activity-row" data-type="tastings"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span style="flex:1;">Tasting — Lisa K.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Mark D.</span><span style="font-size:11px;color:var(--text-muted);">Yesterday</span></div><div class="app-frame-activity-row" data-type="calls"><div class="app-frame-activity-dot" style="background:#D5B893;"></div><span style="flex:1;">Call — Elena R.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div><div class="app-frame-activity-row" data-type="orders"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span style="flex:1;">Order — Tom W.</span><span style="font-size:11px;color:var(--text-muted);">2 days ago</span></div></div>',
+      reports: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Reports</div><div class="app-frame-stats"><div class="app-frame-stat"><div class="app-frame-stat-value">$48.6k</div><div class="app-frame-stat-label">Total Revenue</div></div><div class="app-frame-stat"><div class="app-frame-stat-value">186</div><div class="app-frame-stat-label">Total Activities</div></div></div><div style="margin-top:16px;"><div class="attr-metrics"><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$18,400</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#D5B893;"></div>Follow-ups</div><div class="attr-value">$14,200</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$9,800</div></div><div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#a78bfa;"></div>Direct Orders</div><div class="attr-value">$6,200</div></div></div></div>',
+      followups: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Follow-Ups</div><div class="followup-list" style="margin-bottom:16px;"><div class="followup-row" style="background:rgba(213,184,147,0.06);border:1px solid rgba(213,184,147,0.15);border-radius:8px;"><div class="followup-priority" style="background:#D5B893;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(99,32,36,0.2);color:#943030;">Overdue</div></div><div class="followup-row"><div class="followup-priority" style="background:#D5B893;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(213,184,147,0.15);color:#D5B893;">Tomorrow</div></div><div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div></div><div style="background:var(--card);border-radius:8px;padding:12px;border:1px solid var(--border);"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span style="font-size:12px;font-weight:600;color:var(--amber-accent);">AI Draft for Sarah Martinez</span></div><div id="followupDraft" style="font-size:12px;color:var(--text-secondary);line-height:1.5;min-height:48px;"></div><div style="display:flex;gap:8px;margin-top:10px;"><span style="padding:4px 12px;background:var(--tan);color:var(--navy);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;">Send</span><span style="padding:4px 12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--text-muted);cursor:pointer;">Edit</span></div></div>',
       quests: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Quests</div><div style="display:flex;flex-direction:column;gap:12px;"><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Log 5 Tastings This Week</span><span style="font-size:12px;color:var(--amber-accent);">3/5</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div class="quest-bar-fill" style="width:60%;height:100%;background:var(--amber-400);border-radius:3px;"></div></div></div><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Follow Up With 10 Clients</span><span style="font-size:12px;color:var(--amber-accent);">7/10</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div class="quest-bar-fill" style="width:70%;height:100%;background:var(--amber-400);border-radius:3px;"></div></div></div><div style="padding:12px;background:var(--card);border-radius:8px;"><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="font-size:13px;font-weight:600;color:var(--text-primary);">Hit $15k Revenue</span><span style="font-size:12px;color:#4ade80;">Complete!</span></div><div style="height:6px;background:var(--surface);border-radius:3px;overflow:hidden;"><div class="quest-bar-fill" style="width:100%;height:100%;background:#4ade80;border-radius:3px;"></div></div></div></div>',
       settings: '<div style="font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Settings</div><div style="display:flex;flex-direction:column;gap:12px;"><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Commerce7 Connection</span><span style="font-size:12px;padding:3px 10px;background:rgba(74,222,128,0.15);color:#4ade80;border-radius:10px;">Connected</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Email Notifications</span><span style="font-size:12px;color:var(--amber-accent);">On</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Follow-Up Cadence</span><span style="font-size:12px;color:var(--text-muted);">Adaptive</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:var(--card);border-radius:8px;"><span style="font-size:13px;color:var(--text-primary);">Dark Mode</span><span style="font-size:12px;color:var(--amber-accent);">On</span></div></div>'
     };
@@ -2202,9 +2207,9 @@
       if (!bentoDraft || !bentoName) return;
 
       var clients = [
-        { name: 'Sarah Martinez', tag: 'Overdue', tagBg: 'rgba(248,113,113,0.15)', tagColor: '#f87171', dotColor: '#f87171',
+        { name: 'Sarah Martinez', tag: 'Overdue', tagBg: 'rgba(99,32,36,0.2)', tagColor: '#943030', dotColor: '#943030',
           msg: "Hey Sarah! Just wanted to check in — how was the Pinot from last week? Hope you and David enjoyed it. Let me know if you need anything!" },
-        { name: 'James Thompson', tag: '2 days', tagBg: 'rgba(251,191,36,0.15)', tagColor: '#fbbf24', dotColor: '#fbbf24',
+        { name: 'James Thompson', tag: '2 days', tagBg: 'rgba(213,184,147,0.15)', tagColor: '#D5B893', dotColor: '#D5B893',
           msg: "Hi James! Thanks again for joining the club last month. Just wanted to see how you're enjoying the first shipment — any favorites so far?" },
         { name: 'Lisa Kim', tag: '5 days', tagBg: 'rgba(74,222,128,0.15)', tagColor: '#4ade80', dotColor: '#4ade80',
           msg: "Hey Lisa! It's been a little while — hope all is well. We have a few new releases I think you'd love. Want me to save you a spot at the next tasting?" }

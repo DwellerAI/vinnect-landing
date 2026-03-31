@@ -229,6 +229,9 @@
       .audience-lines { display: none; }
       .advantage-wrap { flex-direction: column; gap: 24px; align-items: center; }
       .bento-grid { grid-template-columns: 1fr; }
+      .section-dashboard { padding: 48px 0 0; }
+      .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
+      .feature-image { max-width: 100%; order: -1; }
     }
 
     /* ========== NAV ========== */
@@ -379,34 +382,33 @@
     .hero-orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.5;
+      filter: blur(40px);
     }
 
     .hero-orb-1 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(251,191,36,0.15), transparent);
-      top: 10%;
-      left: 15%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(251,191,36,0.35), transparent 70%);
+      top: 8%;
+      left: 12%;
       animation: heroFloat1 14s ease-in-out infinite;
     }
 
     .hero-orb-2 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(245,158,11,0.1), transparent);
-      top: 30%;
-      right: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%);
+      top: 25%;
+      right: 8%;
       animation: heroFloat2 16s ease-in-out infinite;
     }
 
     .hero-orb-3 {
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(180,83,9,0.1), transparent);
-      bottom: 20%;
-      left: 40%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(180,83,9,0.2), transparent 70%);
+      bottom: 15%;
+      left: 35%;
       animation: heroFloat3 12s ease-in-out infinite;
     }
 
@@ -420,7 +422,7 @@
       left: 0;
       right: 0;
       height: 300px;
-      opacity: 0.15;
+      opacity: 0.4;
     }
 
     .hero-content {
@@ -901,6 +903,100 @@
       font-weight: 600;
     }
 
+    /* ========== DASHBOARD SHOWCASE ========== */
+    .section-dashboard {
+      padding: 80px 0 0;
+      text-align: center;
+    }
+    .dashboard-wrap {
+      max-width: 1000px;
+      margin: 40px auto 0;
+      position: relative;
+    }
+    .dashboard-wrap .app-frame {
+      box-shadow: 0 20px 80px var(--shadow-med);
+    }
+    .dashboard-ellipse {
+      height: 80px;
+      margin-top: -40px;
+      background: radial-gradient(ellipse at 50% 0%, var(--shadow-med) 0%, transparent 70%);
+    }
+
+    /* ========== DEEP FEATURE BREAKDOWNS ========== */
+    .section-deep-features {
+      padding: 80px 0;
+    }
+    .feature-row {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 64px;
+    }
+    .feature-row:last-child { margin-bottom: 0; }
+    .feature-row:nth-child(even) { flex-direction: row-reverse; }
+    .feature-text { flex: 1; }
+    .feature-image { flex: 1; max-width: 500px; }
+    .feature-tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: rgba(251,191,36,0.1);
+      color: var(--amber-400);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .feature-text h3 {
+      font-size: clamp(24px, 3vw, 32px);
+      margin-bottom: 12px;
+    }
+    .feature-text > p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .feature-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
+    .feature-bullets li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .feature-bullets .check-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--amber-400);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .feature-tip {
+      border-left: 2px solid var(--amber-400);
+      padding: 8px 16px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .feature-image .app-frame {
+      box-shadow: 0 12px 40px var(--shadow-soft);
+    }
+    .feature-mockup-body {
+      padding: 16px;
+      min-height: 200px;
+      font-size: 13px;
+    }
+
   </style>
 </head>
 <body>
@@ -1219,8 +1315,177 @@
           </div>
         </div>
       </section>
-      <section class="section-dashboard" id="dashboard"></section>
-      <section class="section-deep-features" id="deep-features"></section>
+      <section class="section-dashboard" id="dashboard">
+  <div class="container">
+    <h2 class="section-heading">Everything you need — in one clean view.</h2>
+    <p class="section-subtitle mx-auto">Your tasks, clients, insights, and follow-ups all live in one organized workspace. No more switching between 5 different apps.</p>
+  </div>
+  <div class="container">
+    <div class="dashboard-wrap">
+      <div class="app-frame">
+        <div class="app-frame-titlebar">
+          <div class="app-frame-dot" style="background:#ef4444;"></div>
+          <div class="app-frame-dot" style="background:#fbbf24;"></div>
+          <div class="app-frame-dot" style="background:#4ade80;"></div>
+        </div>
+        <div class="app-frame-body">
+          <div class="app-frame-sidebar hide-mobile">
+            <div class="app-frame-sidebar-item active">Dashboard</div>
+            <div class="app-frame-sidebar-item">Clients</div>
+            <div class="app-frame-sidebar-item">Activity Log</div>
+            <div class="app-frame-sidebar-item">Reports</div>
+            <div class="app-frame-sidebar-item">Follow-Ups</div>
+            <div class="app-frame-sidebar-item">Quests</div>
+            <div class="app-frame-sidebar-item">Settings</div>
+          </div>
+          <div class="app-frame-main">
+            <div class="app-frame-greeting">Good morning, John. You've got 4 follow-ups today — let's make them count.</div>
+            <div class="app-frame-stats">
+              <div class="app-frame-stat">
+                <div class="app-frame-stat-value">$18.2k</div>
+                <div class="app-frame-stat-label">Revenue This Month</div>
+              </div>
+              <div class="app-frame-stat">
+                <div class="app-frame-stat-value">63</div>
+                <div class="app-frame-stat-label">Interactions</div>
+              </div>
+              <div class="app-frame-stat">
+                <div class="app-frame-stat-value">94%</div>
+                <div class="app-frame-stat-label">Follow-Up Rate</div>
+              </div>
+              <div class="app-frame-stat">
+                <div class="app-frame-stat-value">12</div>
+                <div class="app-frame-stat-label">New Clients</div>
+              </div>
+            </div>
+            <div class="app-frame-activity">
+              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#4ade80;"></div><span>Tasting with Sarah M. — Pinot Noir flight, 6 bottles ordered</span></div>
+              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#fbbf24;"></div><span>Follow-up call with James T. — club renewal confirmed</span></div>
+              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#60a5fa;"></div><span>Email sent to Lisa K. — spring event invite</span></div>
+              <div class="app-frame-activity-row"><div class="app-frame-activity-dot" style="background:#a78bfa;"></div><span>Meeting with vineyard team — Q2 goals review</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-ellipse"></div>
+  </div>
+</section>
+      <section class="section-deep-features" id="deep-features">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="section-label">Inside the App</div>
+      <h2 class="section-heading">Built for how wine reps actually work</h2>
+    </div>
+
+    <!-- Feature 1: Quick Logging (text left, image right) -->
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-tag">Quick Log</div>
+        <h3>Two seconds. Every interaction.</h3>
+        <p>Vinnect makes logging so fast you'll actually do it. No more end-of-day data dumps or forgotten conversations.</p>
+        <ul class="feature-bullets">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Log calls, tastings, orders in one tap</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Auto-timestamps everything</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Attach notes and follow-up reminders</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Works perfectly on mobile</li>
+        </ul>
+        <div class="feature-tip">You'll actually use it because it's that fast.</div>
+      </div>
+      <div class="feature-image">
+        <div class="app-frame">
+          <div class="app-frame-titlebar">
+            <div class="app-frame-dot" style="background:#ef4444;"></div>
+            <div class="app-frame-dot" style="background:#fbbf24;"></div>
+            <div class="app-frame-dot" style="background:#4ade80;"></div>
+          </div>
+          <div class="feature-mockup-body" style="display:flex;flex-direction:column;gap:12px;">
+            <div style="font-size:15px;font-weight:600;color:var(--text-primary);">Log Activity</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;">
+              <span class="ql-pill active" style="font-size:12px;padding:4px 10px;">Call</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Tasting</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Email</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Order</span>
+              <span class="ql-pill" style="font-size:12px;padding:4px 10px;">Meeting</span>
+            </div>
+            <div style="padding:8px 12px;background:var(--card);border-radius:8px;color:var(--text-muted);font-size:12px;">Great conversation about the new reserve Cab...</div>
+            <div style="display:flex;gap:8px;">
+              <span style="padding:4px 10px;background:var(--step-bg);border-radius:6px;font-size:11px;color:var(--amber-400);">Sarah Martinez</span>
+              <span style="padding:4px 10px;background:var(--card);border-radius:6px;font-size:11px;color:var(--text-muted);">Follow up in 3 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2: Sales Attribution (image left, text right) -->
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-tag">Sales Attribution</div>
+        <h3>See what actually drives revenue</h3>
+        <p>Stop guessing which activities matter. Vinnect connects every interaction to real sales data from Commerce7.</p>
+        <ul class="feature-bullets">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Connect every activity to actual orders</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Track ROI by interaction type</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Revenue per client insights</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Monthly trend analysis</li>
+        </ul>
+        <div class="feature-tip">Finally, proof that your tastings pay off.</div>
+      </div>
+      <div class="feature-image">
+        <div class="app-frame">
+          <div class="app-frame-titlebar">
+            <div class="app-frame-dot" style="background:#ef4444;"></div>
+            <div class="app-frame-dot" style="background:#fbbf24;"></div>
+            <div class="app-frame-dot" style="background:#4ade80;"></div>
+          </div>
+          <div class="feature-mockup-body">
+            <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Sales Attribution</div>
+            <div class="attr-metrics">
+              <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#4ade80;"></div>Tastings</div><div class="attr-value">$12,400</div></div>
+              <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#fbbf24;"></div>Follow-ups</div><div class="attr-value">$8,200</div></div>
+              <div class="attr-row"><div class="attr-label"><div class="attr-dot" style="background:#60a5fa;"></div>Club Events</div><div class="attr-value">$4,800</div></div>
+            </div>
+            <div style="margin-top:12px;padding:8px 12px;background:var(--step-bg);border-radius:8px;font-size:12px;color:var(--amber-400);">Tastings drive 49% of your revenue this month</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3: Smart Follow-Ups (text left, image right) -->
+    <div class="feature-row">
+      <div class="feature-text">
+        <div class="feature-tag">Adaptive Cadence</div>
+        <h3>Never lose touch again</h3>
+        <p>Vinnect learns each client's rhythm and suggests the perfect follow-up timing. No more guessing when to reach out.</p>
+        <ul class="feature-bullets">
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI-suggested follow-up timing</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority-ranked client list</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Overdue contact alerts</li>
+          <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Club renewal reminders</li>
+        </ul>
+        <div class="feature-tip">Your AI assistant quietly watches your back.</div>
+      </div>
+      <div class="feature-image">
+        <div class="app-frame">
+          <div class="app-frame-titlebar">
+            <div class="app-frame-dot" style="background:#ef4444;"></div>
+            <div class="app-frame-dot" style="background:#fbbf24;"></div>
+            <div class="app-frame-dot" style="background:#4ade80;"></div>
+          </div>
+          <div class="feature-mockup-body">
+            <div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px;">Follow-Up Queue</div>
+            <div class="followup-list">
+              <div class="followup-row"><div class="followup-priority" style="background:#f87171;"></div><div class="followup-name">Sarah Martinez</div><div class="followup-days" style="background:rgba(248,113,113,0.15);color:#f87171;">Overdue</div></div>
+              <div class="followup-row"><div class="followup-priority" style="background:#fbbf24;"></div><div class="followup-name">James Thompson</div><div class="followup-days" style="background:rgba(251,191,36,0.15);color:#fbbf24;">Tomorrow</div></div>
+              <div class="followup-row"><div class="followup-priority" style="background:#4ade80;"></div><div class="followup-name">Lisa Kim</div><div class="followup-days" style="background:rgba(74,222,128,0.15);color:#4ade80;">3 days</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       <section class="section-steps" id="steps"></section>
       <section class="section-pricing" id="pricing"></section>
       <section class="section-trust" id="trust"></section>

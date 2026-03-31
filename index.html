@@ -111,24 +111,28 @@
         radial-gradient(ellipse at 20% 60%, rgba(251,191,36,0.02) 0%, transparent 40%);
       pointer-events: none;
     }
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      opacity: 0.035;
+    body::after { display: none; /* replaced by .noise-overlay SVG */
       background-image: url("data:image/png;base64,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");
       background-repeat: repeat;
       background-size: 128px 128px;
       pointer-events: none;
+    }
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.06;
+      width: 100%;
+      height: 100%;
     }
     [data-theme="light"] body::before {
       background:
         radial-gradient(ellipse at 50% 0%, rgba(251,191,36,0.03) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(180,83,9,0.02) 0%, transparent 40%);
     }
-    [data-theme="light"] body::after {
-      opacity: 0.02;
+    [data-theme="light"] .noise-overlay {
+      opacity: 0.03;
     }
 
     /* ========== TYPOGRAPHY ========== */
@@ -1307,6 +1311,14 @@
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
+  <!-- Noise texture overlay -->
+  <svg class="noise-overlay" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+  </svg>
   <div class="page-wrapper">
     <div class="nav-fixed" id="nav">
       <div class="nav-container">
@@ -1906,28 +1918,29 @@
     document.getElementById('dashMain').innerHTML = mockupPages.dashboard;
 
     // Slowly increment mockup stats to feel alive
+    // Wine DTC sales: a good sale is $1,800-$3,500, so jumps should feel meaningful
     (function() {
-      var statTargets = { '$12.4k': 12.4, '$18.2k': 18.2 };
       function tickStats() {
         document.querySelectorAll('.app-frame-stat-value').forEach(function(el) {
           var text = el.textContent.trim();
           if (text.startsWith('$') && text.endsWith('k')) {
             var val = parseFloat(text.replace('$','').replace('k',''));
             if (!isNaN(val)) {
-              val += (Math.random() * 0.3 + 0.1);
+              // Jump by $1.8k-$3.5k (realistic sale size)
+              var sale = (Math.random() * 1.7 + 1.8);
+              val += sale;
               el.textContent = '$' + val.toFixed(1) + 'k';
             }
           } else if (/^\d+$/.test(text)) {
             var num = parseInt(text);
-            if (num < 200) {
-              el.textContent = (num + 1).toString();
+            if (num < 500) {
+              // Bump interactions by 1-3
+              el.textContent = (num + Math.floor(Math.random() * 3) + 1).toString();
             }
-          } else if (text.endsWith('%')) {
-            // Don't change percentages — keep them stable
           }
         });
       }
-      setInterval(tickStats, 3000);
+      setInterval(tickStats, 4000);
     })();
 
     window.showMockupPage = function(target, page) {

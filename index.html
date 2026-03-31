@@ -1849,8 +1849,8 @@
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
       var particles = [];
-      var numParticles = 120;
-      var connectionDistance = 150;
+      var numParticles = 70;
+      var connectionDistance = 130;
       var mouseX = -1000, mouseY = -1000;
 
       function resize() {
@@ -1879,10 +1879,10 @@
         particles.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          radius: Math.random() * 2 + 1,
-          brightness: Math.random() * 0.5 + 0.3
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          radius: Math.random() * 1.2 + 0.5,
+          brightness: Math.random() * 0.25 + 0.1
         });
       }
 
@@ -1907,7 +1907,7 @@
           var dx = p.x - mouseX;
           var dy = p.y - mouseY;
           var mouseDist = Math.sqrt(dx * dx + dy * dy);
-          var mouseGlow = mouseDist < 200 ? (1 - mouseDist / 200) * 0.6 : 0;
+          var mouseGlow = mouseDist < 180 ? (1 - mouseDist / 180) * 0.35 : 0;
 
           // Draw node
           var alpha = p.brightness + mouseGlow;
@@ -1932,7 +1932,7 @@
             var dy = particles[i].y - particles[j].y;
             var dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < connectionDistance) {
-              var lineAlpha = (1 - dist / connectionDistance) * 0.15;
+              var lineAlpha = (1 - dist / connectionDistance) * 0.08;
 
               // Brighten lines near mouse
               var midX = (particles[i].x + particles[j].x) / 2;
@@ -1940,7 +1940,7 @@
               var mDx = midX - mouseX;
               var mDy = midY - mouseY;
               var mDist = Math.sqrt(mDx * mDx + mDy * mDy);
-              if (mDist < 200) lineAlpha += (1 - mDist / 200) * 0.15;
+              if (mDist < 180) lineAlpha += (1 - mDist / 180) * 0.1;
 
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);

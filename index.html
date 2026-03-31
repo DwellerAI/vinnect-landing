@@ -223,6 +223,11 @@
       .app-frame-sidebar { display: none; }
       .app-frame-stats { flex-wrap: wrap; }
       .app-frame-stat { min-width: calc(50% - 6px); }
+      .audience-hub { min-height: auto; flex-direction: column; gap: 24px; }
+      .audience-labels { position: static; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+      .audience-label { position: static; }
+      .audience-lines { display: none; }
+      .advantage-wrap { flex-direction: column; gap: 24px; align-items: center; }
     }
 
     /* ========== NAV ========== */
@@ -617,6 +622,113 @@
     @keyframes heroEntrance { to { opacity: 1; transform: translateY(0); } }
     @keyframes heroMockupEntrance { to { opacity: 1; transform: translateY(0) scale(1); } }
 
+    /* ========== DESIGNED FOR ========== */
+    .section-audience {
+      padding: 80px 0;
+      position: relative;
+    }
+    .audience-hub {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    .audience-center {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--amber-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--amber-400);
+      box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+    .audience-labels {
+      position: absolute;
+      inset: 0;
+    }
+    .audience-label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+    .audience-label:nth-child(1) { top: 0; right: 10%; }
+    .audience-label:nth-child(2) { top: 0; left: 10%; }
+    .audience-label:nth-child(3) { bottom: 0; right: 10%; }
+    .audience-label:nth-child(4) { bottom: 0; left: 10%; }
+    .audience-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--amber-400);
+      flex-shrink: 0;
+    }
+    .audience-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    .audience-tagline {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-top: 16px;
+    }
+
+    /* ========== ADVANTAGE STRIP ========== */
+    .section-advantage {
+      padding: 60px 0;
+      text-align: center;
+    }
+    .advantage-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .advantage-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .advantage-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--amber-400);
+    }
+    .advantage-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .advantage-statement {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(20px, 2.5vw, 28px);
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
   </style>
 </head>
 <body>
@@ -746,8 +858,60 @@
           <div class="hero-ellipse"></div>
         </div>
       </section>
-      <section class="section-audience" id="audience"></section>
-      <section class="section-advantage" id="advantage"></section>
+      <section class="section-audience" id="audience">
+        <div class="container text-center">
+          <div class="section-label">Who It's For</div>
+          <h2 class="section-heading">Designed For</h2>
+
+          <div class="audience-hub">
+            <!-- Connection lines SVG -->
+            <svg class="audience-lines" viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <line x1="300" y1="140" x2="480" y2="30" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
+              <line x1="300" y1="140" x2="120" y2="30" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
+              <line x1="300" y1="140" x2="480" y2="250" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
+              <line x1="300" y1="140" x2="120" y2="250" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
+            </svg>
+
+            <!-- Labels -->
+            <div class="audience-labels">
+              <div class="audience-label"><div class="audience-dot"></div> Wine Sales Reps</div>
+              <div class="audience-label"><div class="audience-dot"></div> Tasting Room Teams</div>
+              <div class="audience-label"><div class="audience-dot"></div> DTC Managers</div>
+              <div class="audience-label"><div class="audience-dot"></div> Wine Club Managers</div>
+            </div>
+
+            <!-- Center icon -->
+            <div class="audience-center">V</div>
+          </div>
+
+          <p class="audience-tagline">And anyone tired of logging sales in spreadsheets.</p>
+        </div>
+      </section>
+      <section class="section-advantage" id="advantage">
+        <div class="container">
+          <div class="advantage-wrap">
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="advantage-text">Less data entry.</div>
+            </div>
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="advantage-text">Less guesswork.</div>
+            </div>
+            <div class="advantage-item">
+              <div class="advantage-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="advantage-text">More sales.</div>
+            </div>
+          </div>
+          <h4 class="advantage-statement">Vinnect handles the tracking — so your mind stays free for selling.</h4>
+        </div>
+      </section>
       <section class="section-features" id="features"></section>
       <section class="section-dashboard" id="dashboard"></section>
       <section class="section-deep-features" id="deep-features"></section>

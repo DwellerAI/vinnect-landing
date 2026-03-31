@@ -220,6 +220,9 @@
     @media (max-width: 768px) {
       .hide-mobile { display: none !important; }
       .show-mobile { display: flex !important; }
+      .app-frame-sidebar { display: none; }
+      .app-frame-stats { flex-wrap: wrap; }
+      .app-frame-stat { min-width: calc(50% - 6px); }
     }
 
     /* ========== NAV ========== */
@@ -348,6 +351,272 @@
       display: flex;
     }
 
+    /* ========== HERO ========== */
+    .section-hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+    }
+
+    .hero-orb-1 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(251,191,36,0.15), transparent);
+      top: 10%;
+      left: 15%;
+      animation: heroFloat1 14s ease-in-out infinite;
+    }
+
+    .hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245,158,11,0.1), transparent);
+      top: 30%;
+      right: 10%;
+      animation: heroFloat2 16s ease-in-out infinite;
+    }
+
+    .hero-orb-3 {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(180,83,9,0.1), transparent);
+      bottom: 20%;
+      left: 40%;
+      animation: heroFloat3 12s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat1 { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-30px) translateX(15px); } }
+    @keyframes heroFloat2 { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(20px) translateX(-20px); } }
+    @keyframes heroFloat3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-25px); } }
+
+    .hero-vineyard {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 300px;
+      opacity: 0.15;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--amber-400);
+      margin-bottom: 24px;
+      animation: badgePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes badgePulse { 0%, 100% { border-color: var(--badge-border); } 50% { border-color: var(--amber-400); } }
+
+    .hero-headline {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-headline strong {
+      color: var(--amber-400);
+    }
+
+    .hero-subheadline {
+      font-size: 18px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-mockup {
+      max-width: 900px;
+      width: 100%;
+      margin: 48px auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .app-frame {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--surface);
+      box-shadow: 0 20px 60px var(--shadow-med);
+    }
+
+    .app-frame-titlebar {
+      height: 36px;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .app-frame-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .app-frame-body {
+      display: flex;
+      min-height: 280px;
+    }
+
+    .app-frame-sidebar {
+      width: 200px;
+      padding: 16px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .app-frame-sidebar-item {
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      cursor: default;
+    }
+
+    .app-frame-sidebar-item.active {
+      background: var(--pill-active-bg);
+      color: var(--amber-400);
+    }
+
+    .app-frame-main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .app-frame-greeting {
+      font-family: 'Cormorant', serif;
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    .app-frame-stats {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .app-frame-stat {
+      flex: 1;
+      padding: 12px;
+      background: var(--card);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .app-frame-stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--amber-400);
+    }
+
+    .app-frame-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .app-frame-activity {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .app-frame-activity-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--card);
+      font-size: 13px;
+    }
+
+    .app-frame-activity-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero-ellipse {
+      position: relative;
+      height: 60px;
+      margin-top: -30px;
+      background: radial-gradient(ellipse at 50% 0%, var(--shadow-med) 0%, transparent 70%);
+    }
+
+    /* Hero entrance animations */
+    .hero-content > * {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroEntrance 0.8s ease forwards;
+    }
+    .hero-content > :nth-child(1) { animation-delay: 0.2s; }
+    .hero-content > :nth-child(2) { animation-delay: 0.4s; }
+    .hero-content > :nth-child(3) { animation-delay: 0.6s; }
+    .hero-content > :nth-child(4) { animation-delay: 0.8s; }
+
+    .hero-mockup {
+      opacity: 0;
+      transform: translateY(40px) scale(0.97);
+      animation: heroMockupEntrance 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes heroEntrance { to { opacity: 1; transform: translateY(0); } }
+    @keyframes heroMockupEntrance { to { opacity: 1; transform: translateY(0) scale(1); } }
+
   </style>
 </head>
 <body>
@@ -381,7 +650,102 @@
       </div>
     </div>
     <main>
-      <section class="section-hero" id="hero"></section>
+      <section class="section-hero" id="hero">
+        <!-- Animated background -->
+        <div class="hero-bg">
+          <div class="hero-orb hero-orb-1"></div>
+          <div class="hero-orb hero-orb-2"></div>
+          <div class="hero-orb hero-orb-3"></div>
+          <!-- Abstract vineyard curves -->
+          <svg class="hero-vineyard" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="hillGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.3"/>
+                <stop offset="50%" stop-color="#4ade80" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.2"/>
+              </linearGradient>
+              <linearGradient id="hillGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.15"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,250 Q200,180 400,220 T800,190 T1200,230 T1440,200 L1440,300 L0,300 Z" fill="url(#hillGrad1)"/>
+            <path d="M0,270 Q300,200 600,250 T1100,210 T1440,240 L1440,300 L0,300 Z" fill="url(#hillGrad2)"/>
+            <!-- Subtle vine tendrils -->
+            <path d="M200,240 Q250,200 300,220 Q350,240 400,210" stroke="#fbbf24" stroke-opacity="0.08" stroke-width="1.5" fill="none"/>
+            <path d="M800,220 Q850,190 900,210 Q950,230 1000,200" stroke="#4ade80" stroke-opacity="0.06" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+
+        <!-- Hero content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            Built for Wine. Built for You.
+          </div>
+          <h1 class="hero-headline">Connect what you <strong>do</strong> to what <strong>sells</strong>.</h1>
+          <p class="hero-subheadline">Vinnect tracks your tastings, follow-ups, and client relationships — then shows you exactly what drives revenue.</p>
+          <div class="hero-buttons">
+            <a href="#signup" class="btn-primary">Get Early Access</a>
+            <a href="#steps" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              See How It Works
+            </a>
+          </div>
+        </div>
+
+        <!-- App mockup -->
+        <div class="hero-mockup">
+          <div class="app-frame">
+            <div class="app-frame-titlebar">
+              <div class="app-frame-dot" style="background:#ef4444;"></div>
+              <div class="app-frame-dot" style="background:#fbbf24;"></div>
+              <div class="app-frame-dot" style="background:#4ade80;"></div>
+            </div>
+            <div class="app-frame-body">
+              <div class="app-frame-sidebar hide-mobile">
+                <div class="app-frame-sidebar-item active">Dashboard</div>
+                <div class="app-frame-sidebar-item">Clients</div>
+                <div class="app-frame-sidebar-item">Activity Log</div>
+                <div class="app-frame-sidebar-item">Reports</div>
+                <div class="app-frame-sidebar-item">Follow-Ups</div>
+              </div>
+              <div class="app-frame-main">
+                <div class="app-frame-greeting">Good morning, John. You've got 4 follow-ups today.</div>
+                <div class="app-frame-stats">
+                  <div class="app-frame-stat">
+                    <div class="app-frame-stat-value">$12.4k</div>
+                    <div class="app-frame-stat-label">Revenue This Month</div>
+                  </div>
+                  <div class="app-frame-stat">
+                    <div class="app-frame-stat-value">47</div>
+                    <div class="app-frame-stat-label">Interactions Logged</div>
+                  </div>
+                  <div class="app-frame-stat">
+                    <div class="app-frame-stat-value">92%</div>
+                    <div class="app-frame-stat-label">Follow-Up Rate</div>
+                  </div>
+                </div>
+                <div class="app-frame-activity">
+                  <div class="app-frame-activity-row">
+                    <div class="app-frame-activity-dot" style="background:#4ade80;"></div>
+                    <span>Tasting with Sarah M. — Pinot Noir flight</span>
+                  </div>
+                  <div class="app-frame-activity-row">
+                    <div class="app-frame-activity-dot" style="background:#fbbf24;"></div>
+                    <span>Follow-up call with James T. — club renewal</span>
+                  </div>
+                  <div class="app-frame-activity-row">
+                    <div class="app-frame-activity-dot" style="background:#60a5fa;"></div>
+                    <span>Email sent to Lisa K. — event invite</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-ellipse"></div>
+        </div>
+      </section>
       <section class="section-audience" id="audience"></section>
       <section class="section-advantage" id="advantage"></section>
       <section class="section-features" id="features"></section>

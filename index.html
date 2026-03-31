@@ -213,6 +213,16 @@
       }
     }
 
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--amber-400);
+      z-index: 100;
+      width: 0%;
+    }
+
     /* ========== RESPONSIVE BASE ========== */
     .hide-mobile { display: flex; }
     .show-mobile { display: none; }
@@ -223,10 +233,6 @@
       .app-frame-sidebar { display: none; }
       .app-frame-stats { flex-wrap: wrap; }
       .app-frame-stat { min-width: calc(50% - 6px); }
-      .audience-hub { min-height: auto; flex-direction: column; gap: 24px; }
-      .audience-labels { position: static; display: flex; flex-direction: column; gap: 16px; align-items: center; }
-      .audience-label { position: static; }
-      .audience-lines { display: none; }
       .advantage-wrap { flex-direction: column; gap: 24px; align-items: center; }
       .bento-grid { grid-template-columns: 1fr; }
       .section-dashboard { padding: 48px 0 0; }
@@ -636,73 +642,6 @@
     @keyframes heroMockupEntrance { to { opacity: 1; transform: translateY(0) scale(1); } }
 
     /* ========== DESIGNED FOR ========== */
-    .section-audience {
-      padding: 80px 0;
-      position: relative;
-    }
-    .audience-hub {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 280px;
-      margin: 40px auto;
-      max-width: 600px;
-    }
-    .audience-center {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--card);
-      border: 2px solid var(--amber-400);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--amber-400);
-      box-shadow: 0 0 40px rgba(251, 191, 36, 0.15);
-      position: relative;
-      z-index: 2;
-    }
-    .audience-labels {
-      position: absolute;
-      inset: 0;
-    }
-    .audience-label {
-      position: absolute;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .audience-label:nth-child(1) { top: 0; right: 10%; }
-    .audience-label:nth-child(2) { top: 0; left: 10%; }
-    .audience-label:nth-child(3) { bottom: 0; right: 10%; }
-    .audience-label:nth-child(4) { bottom: 0; left: 10%; }
-    .audience-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--amber-400);
-      flex-shrink: 0;
-    }
-    .audience-lines {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-    .audience-tagline {
-      font-family: 'Cormorant', serif;
-      font-size: 20px;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-top: 16px;
-    }
-
     /* ========== ADVANTAGE STRIP ========== */
     .section-advantage {
       padding: 60px 0;
@@ -1315,6 +1254,7 @@
   </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="page-wrapper">
     <div class="nav-fixed" id="nav">
       <div class="nav-container">
@@ -1441,71 +1381,46 @@
           <div class="hero-ellipse"></div>
         </div>
       </section>
-      <section class="section-audience" id="audience">
-        <div class="container text-center">
-          <div class="section-label">Who It's For</div>
-          <h2 class="section-heading">Designed For</h2>
-
-          <div class="audience-hub">
-            <!-- Connection lines SVG -->
-            <svg class="audience-lines" viewBox="0 0 600 280" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <line x1="300" y1="140" x2="480" y2="30" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
-              <line x1="300" y1="140" x2="120" y2="30" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
-              <line x1="300" y1="140" x2="480" y2="250" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
-              <line x1="300" y1="140" x2="120" y2="250" stroke="var(--amber-400)" stroke-opacity="0.2" stroke-width="1"/>
-            </svg>
-
-            <!-- Labels -->
-            <div class="audience-labels">
-              <div class="audience-label"><div class="audience-dot"></div> Wine Sales Reps</div>
-              <div class="audience-label"><div class="audience-dot"></div> Tasting Room Teams</div>
-              <div class="audience-label"><div class="audience-dot"></div> DTC Managers</div>
-              <div class="audience-label"><div class="audience-dot"></div> Wine Club Managers</div>
-            </div>
-
-            <!-- Center icon -->
-            <div class="audience-center">V</div>
-          </div>
-
-          <p class="audience-tagline">And anyone tired of logging sales in spreadsheets.</p>
-        </div>
-      </section>
       <section class="section-advantage" id="advantage">
         <div class="container">
-          <div class="advantage-wrap">
-            <div class="advantage-item">
-              <div class="advantage-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <div data-stagger-wrapper>
+            <div class="advantage-wrap">
+              <div class="advantage-item" data-stagger-item="bottom">
+                <div class="advantage-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="advantage-text">Less data entry.</div>
               </div>
-              <div class="advantage-text">Less data entry.</div>
-            </div>
-            <div class="advantage-item">
-              <div class="advantage-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <div class="advantage-item" data-stagger-item="bottom">
+                <div class="advantage-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="advantage-text">Less guesswork.</div>
               </div>
-              <div class="advantage-text">Less guesswork.</div>
-            </div>
-            <div class="advantage-item">
-              <div class="advantage-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <div class="advantage-item" data-stagger-item="bottom">
+                <div class="advantage-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <div class="advantage-text">More sales.</div>
               </div>
-              <div class="advantage-text">More sales.</div>
             </div>
+            <h4 class="advantage-statement" data-stagger-item="bottom">Vinnect handles the tracking — so your mind stays free for selling.</h4>
           </div>
-          <h4 class="advantage-statement">Vinnect handles the tracking — so your mind stays free for selling.</h4>
         </div>
       </section>
       <section class="section-features" id="features">
         <div class="container text-center">
-          <div class="section-label">Why Vinnect</div>
-          <h2 class="section-heading">Goodbye to Guesswork</h2>
-          <p class="section-subtitle mx-auto">Log your day. See your impact. Keep every relationship alive.</p>
+          <div data-stagger-wrapper>
+            <div class="section-label" data-stagger-item="bottom">Why Vinnect</div>
+            <h2 class="section-heading" data-stagger-item="bottom">Goodbye to Guesswork</h2>
+            <p class="section-subtitle mx-auto" data-stagger-item="bottom">Log your day. See your impact. Keep every relationship alive.</p>
+          </div>
         </div>
 
         <div class="container">
-          <div class="bento-grid">
+          <div class="bento-grid" data-stagger-wrapper>
             <!-- Card 1: Quick Log -->
-            <div class="bento-card">
+            <div class="bento-card" data-stagger-item="bottom">
               <div class="bento-card-illustration">
                 <div class="ql-pills" id="qlPills">
                   <div class="ql-pill active">Call</div>
@@ -1529,7 +1444,7 @@
             </div>
 
             <!-- Card 2: Sales Attribution -->
-            <div class="bento-card">
+            <div class="bento-card" data-stagger-item="bottom">
               <div class="bento-card-illustration">
                 <div class="attr-metrics">
                   <div class="attr-row">
@@ -1560,7 +1475,7 @@
             </div>
 
             <!-- Card 3: Client 360 -->
-            <div class="bento-card">
+            <div class="bento-card" data-stagger-item="bottom">
               <div class="bento-card-illustration">
                 <div class="contact-list">
                   <div class="contact-row">
@@ -1599,7 +1514,7 @@
             </div>
 
             <!-- Card 4: Smart Follow-Ups -->
-            <div class="bento-card">
+            <div class="bento-card" data-stagger-item="bottom">
               <div class="bento-card-illustration">
                 <div class="followup-list">
                   <div class="followup-row">
@@ -1632,8 +1547,10 @@
       </section>
       <section class="section-dashboard" id="dashboard">
   <div class="container">
-    <h2 class="section-heading">Everything you need — in one clean view.</h2>
-    <p class="section-subtitle mx-auto">Your tasks, clients, insights, and follow-ups all live in one organized workspace. No more switching between 5 different apps.</p>
+    <div data-stagger-wrapper>
+      <h2 class="section-heading" data-stagger-item="bottom">Everything you need — in one clean view.</h2>
+      <p class="section-subtitle mx-auto" data-stagger-item="bottom">Your tasks, clients, insights, and follow-ups all live in one organized workspace. No more switching between 5 different apps.</p>
+    </div>
   </div>
   <div class="container">
     <div class="dashboard-wrap">
@@ -1688,9 +1605,9 @@
 </section>
       <section class="section-deep-features" id="deep-features">
   <div class="container">
-    <div class="text-center" style="margin-bottom:48px;">
-      <div class="section-label">Inside the App</div>
-      <h2 class="section-heading">Built for how wine reps actually work</h2>
+    <div class="text-center" style="margin-bottom:48px;" data-stagger-wrapper>
+      <div class="section-label" data-stagger-item="bottom">Inside the App</div>
+      <h2 class="section-heading" data-stagger-item="bottom">Built for how wine reps actually work</h2>
     </div>
 
     <!-- Feature 1: Quick Logging (text left, image right) -->
@@ -1803,12 +1720,14 @@
 </section>
       <section class="section-steps" id="steps">
   <div class="container text-center">
-    <div class="section-label">Get Started</div>
-    <h2 class="section-heading">Simple 3-step flow</h2>
+    <div data-stagger-wrapper>
+      <div class="section-label" data-stagger-item="bottom">Get Started</div>
+      <h2 class="section-heading" data-stagger-item="bottom">Simple 3-step flow</h2>
+    </div>
   </div>
   <div class="container">
-    <div class="steps-wrap">
-      <div class="step-card">
+    <div class="steps-wrap" data-stagger-wrapper>
+      <div class="step-card" data-stagger-item="bottom">
         <div class="step-illustration">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </div>
@@ -1818,7 +1737,7 @@
           <p>Link your account in 60 seconds. Your client and order data syncs automatically.</p>
         </div>
       </div>
-      <div class="step-card">
+      <div class="step-card" data-stagger-item="bottom">
         <div class="step-illustration">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
         </div>
@@ -1828,7 +1747,7 @@
           <p>Log every interaction. Vinnect does the rest — attribution, follow-ups, insights.</p>
         </div>
       </div>
-      <div class="step-card">
+      <div class="step-card" data-stagger-item="bottom">
         <div class="step-illustration">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
         </div>
@@ -1843,17 +1762,19 @@
 </section>
       <section class="section-pricing" id="pricing">
   <div class="container text-center">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-heading">Choose Your Plan</h2>
-    <p class="section-subtitle mx-auto">Start Free — Scale as You Grow</p>
+    <div data-stagger-wrapper>
+      <div class="section-label" data-stagger-item="bottom">Pricing</div>
+      <h2 class="section-heading" data-stagger-item="bottom">Choose Your Plan</h2>
+      <p class="section-subtitle mx-auto" data-stagger-item="bottom">Start Free — Scale as You Grow</p>
+    </div>
     <div class="pricing-toggle">
       <button class="pricing-toggle-btn" onclick="this.parentElement.querySelectorAll('.pricing-toggle-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');">Monthly</button>
       <button class="pricing-toggle-btn active" onclick="this.parentElement.querySelectorAll('.pricing-toggle-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');">Yearly</button>
     </div>
   </div>
   <div class="container">
-    <div class="pricing-cards">
-      <div class="pricing-card">
+    <div class="pricing-cards" data-stagger-wrapper>
+      <div class="pricing-card" data-stagger-item="bottom">
         <h3>Start Free</h3>
         <p>Perfect for getting started with smart logging.</p>
         <div class="pricing-price">$0 <span>/month</span></div>
@@ -1865,7 +1786,7 @@
         </ul>
         <a href="#signup" class="btn-secondary">Start Free</a>
       </div>
-      <div class="pricing-card highlighted">
+      <div class="pricing-card highlighted" data-stagger-item="bottom">
         <h3>Vinnect Pro</h3>
         <p>For serious reps who want the full edge.</p>
         <div class="pricing-price">TBD <span>/month</span></div>
@@ -1885,18 +1806,18 @@
 </section>
       <section class="section-trust" id="trust">
   <div class="container">
-    <div class="trust-bar">
-      <div class="trust-item">
+    <div class="trust-bar" data-stagger-wrapper>
+      <div class="trust-item" data-stagger-item="bottom">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         Built by a wine sales rep
       </div>
       <div class="trust-separator"></div>
-      <div class="trust-item">
+      <div class="trust-item" data-stagger-item="bottom">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         Commerce7 Integrated
       </div>
       <div class="trust-separator"></div>
-      <div class="trust-item">
+      <div class="trust-item" data-stagger-item="bottom">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         Designed for DTC
       </div>
@@ -1904,17 +1825,17 @@
   </div>
 </section>
       <section class="section-cta" id="signup">
-  <div class="container">
-    <h2>Where relationships age beautifully.</h2>
-    <p class="cta-subtitle">Every CRM tells you who your clients are. Vinnect shows you what to do about it.</p>
-    <form class="waitlist-form" id="waitlistForm">
+  <div class="container" data-stagger-wrapper>
+    <h2 data-stagger-item="bottom">Where relationships age beautifully.</h2>
+    <p class="cta-subtitle" data-stagger-item="bottom">Every CRM tells you who your clients are. Vinnect shows you what to do about it.</p>
+    <form class="waitlist-form" id="waitlistForm" data-stagger-item="bottom">
       <label for="waitlistEmail" class="sr-only">Email address</label>
       <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email" required>
       <button type="submit" id="waitlistBtn" class="btn-primary">Join Waitlist</button>
     </form>
     <div class="success-msg" id="successMsg">You're on the list! We'll be in touch soon.</div>
     <div class="error-msg" id="errorMsg">Something went wrong. Please try again.</div>
-    <div class="cta-note">No credit card required · Setup in 2 minutes</div>
+    <div class="cta-note" data-stagger-item="bottom">No credit card required · Setup in 2 minutes</div>
   </div>
 </section>
       <footer class="section-footer" id="footer">
@@ -1931,6 +1852,8 @@
     </main>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
   <script>
     // Theme toggle
     (function() {
@@ -2007,6 +1930,82 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.bento-card').forEach(el => countObserver.observe(el));
+
+    // ========== GSAP SCROLL ANIMATIONS ==========
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Stagger animation for [data-stagger-wrapper] containers
+      document.querySelectorAll('[data-stagger-wrapper]').forEach(wrapper => {
+        const children = wrapper.querySelectorAll('[data-stagger-item]');
+        if (children.length === 0) return;
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: wrapper,
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        });
+
+        children.forEach((child, index) => {
+          let x = 0, y = 0;
+          const dir = child.getAttribute('data-stagger-item');
+          if (dir === 'bottom') y = 40;
+          else if (dir === 'top') y = -40;
+          else if (dir === 'left') x = -40;
+          else if (dir === 'right') x = 40;
+          else y = 30;
+
+          tl.fromTo(child,
+            { opacity: 0, x, y },
+            { opacity: 1, x: 0, y: 0, duration: 0.8, ease: 'power2.out' },
+            index * 0.15
+          );
+        });
+      });
+
+      // Feature rows: text slides from one side, image from other
+      document.querySelectorAll('.feature-row').forEach((row, i) => {
+        const text = row.querySelector('.feature-text');
+        const image = row.querySelector('.feature-image');
+        if (!text || !image) return;
+        const fromLeft = i % 2 === 0;
+
+        gsap.fromTo(text,
+          { opacity: 0, x: fromLeft ? -40 : 40 },
+          { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: { trigger: row, start: 'top 80%', toggleActions: 'play none none none' }
+          }
+        );
+        gsap.fromTo(image,
+          { opacity: 0, x: fromLeft ? 40 : -40 },
+          { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out',
+            scrollTrigger: { trigger: row, start: 'top 80%', toggleActions: 'play none none none' }
+          }
+        );
+      });
+
+      // Dashboard mockup fade-up
+      const dashboard = document.querySelector('.dashboard-wrap');
+      if (dashboard) {
+        gsap.fromTo(dashboard,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+            scrollTrigger: { trigger: dashboard, start: 'top 85%', toggleActions: 'play none none none' }
+          }
+        );
+      }
+
+      // Scroll progress bar
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+        document.getElementById('scrollProgress').style.width = scrolled + '%';
+      });
+    })();
   </script>
 
   <!-- Supabase JS client -->

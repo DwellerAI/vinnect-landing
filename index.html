@@ -1451,7 +1451,6 @@
               <div class="app-frame-main" id="heroMain" style="transition:opacity 0.2s;"></div>
             </div>
           </div>
-          <div class="hero-ellipse"></div>
         </div>
       </section>
       <section class="section-advantage" id="advantage">
@@ -1613,6 +1612,11 @@
                   <div class="followup-name" id="bentoNextName" style="font-size:12px;">James Thompson</div>
                   <div class="followup-days" id="bentoNextTag" style="background:rgba(213,184,147,0.15);color:#D5B893;font-size:10px;">2 days</div>
                 </div>
+                <div class="followup-row" style="opacity:0.25;">
+                  <div class="followup-priority" id="bentoNext2Dot" style="background:#4ade80;"></div>
+                  <div class="followup-name" id="bentoNext2Name" style="font-size:12px;">Lisa Kim</div>
+                  <div class="followup-days" id="bentoNext2Tag" style="background:rgba(74,222,128,0.15);color:#4ade80;font-size:10px;">5 days</div>
+                </div>
               </div>
               <div class="bento-card-body">
                 <div class="bento-card-icon">
@@ -1654,7 +1658,6 @@
         </div>
       </div>
     </div>
-    <div class="dashboard-ellipse"></div>
   </div>
 </section>
       <section class="section-deep-features" id="deep-features">
@@ -2123,7 +2126,6 @@
         // Start page-specific animations
         if (activityCycleTimer) clearInterval(activityCycleTimer);
         if (clientScrollTimer) clearInterval(clientScrollTimer);
-        if (draftTypingTimer) clearTimeout(draftTypingTimer);
         if (page === 'activity') startActivityCycle();
         if (page === 'clients') startClientScroll();
         if (page === 'quests') startQuestAnimation();
@@ -2211,6 +2213,9 @@
       var bentoNextName = document.getElementById('bentoNextName');
       var bentoNextTag = document.getElementById('bentoNextTag');
       var bentoNextDot = document.getElementById('bentoNextDot');
+      var bentoNext2Name = document.getElementById('bentoNext2Name');
+      var bentoNext2Tag = document.getElementById('bentoNext2Tag');
+      var bentoNext2Dot = document.getElementById('bentoNext2Dot');
       if (!bentoDraft || !bentoName) return;
 
       var clients = [
@@ -2224,8 +2229,10 @@
       var clientIdx = 0;
       var isVisible = false;
       var cycling = false;
+      var typingGen = 0;
 
       function typeClient() {
+        var gen = ++typingGen;
         var client = clients[clientIdx];
         // Update current client info
         bentoName.textContent = client.name;
@@ -2233,32 +2240,40 @@
         bentoTag.style.background = client.tagBg;
         bentoTag.style.color = client.tagColor;
         bentoDot.style.background = client.dotColor;
-        // Update "next up" client
+        // Update "next up" clients
         var nextClient = clients[(clientIdx + 1) % clients.length];
         bentoNextName.textContent = nextClient.name;
         bentoNextTag.textContent = nextClient.tag;
         bentoNextTag.style.background = nextClient.tagBg;
         bentoNextTag.style.color = nextClient.tagColor;
         bentoNextDot.style.background = nextClient.dotColor;
+        var next2Client = clients[(clientIdx + 2) % clients.length];
+        bentoNext2Name.textContent = next2Client.name;
+        bentoNext2Tag.textContent = next2Client.tag;
+        bentoNext2Tag.style.background = next2Client.tagBg;
+        bentoNext2Tag.style.color = next2Client.tagColor;
+        bentoNext2Dot.style.background = next2Client.dotColor;
         // Type the message
         var i = 0;
         bentoDraft.textContent = '';
         bentoDraft.style.borderRight = '1px solid var(--accent)';
         function type() {
+          if (gen !== typingGen) return;
           if (i < client.msg.length) {
             bentoDraft.textContent += client.msg.charAt(i);
             i++;
             setTimeout(type, 18 + Math.random() * 22);
           } else {
-            setTimeout(function() { bentoDraft.style.borderRight = 'none'; }, 1200);
+            setTimeout(function() { if (gen === typingGen) bentoDraft.style.borderRight = 'none'; }, 1200);
             // Pause, then move to next client
             setTimeout(function() {
+              if (gen !== typingGen) return;
               clientIdx = (clientIdx + 1) % clients.length;
               if (isVisible) typeClient();
             }, 4000);
           }
         }
-        setTimeout(type, 500);
+        setTimeout(function() { if (gen === typingGen) type(); }, 500);
       }
 
       var observer = new IntersectionObserver(function(entries) {
@@ -2277,9 +2292,9 @@
     })();
 
     // Follow-up draft typing animation
-    var draftTypingTimer = null;
+    var draftTypingGen = 0;
     function startDraftTyping() {
-      if (draftTypingTimer) clearTimeout(draftTypingTimer);
+      var gen = ++draftTypingGen;
       var el = document.getElementById('followupDraft');
       if (!el) return;
       var msg = "Hey Sarah! Just checking in after the tasting last week — hope you and David are enjoying the Pinot. Would love to have you back sometime soon, we just released a new small-lot Syrah I think you'd really love. No rush at all, just wanted to say hi! 🍷";
@@ -2288,16 +2303,17 @@
       el.style.borderRight = '2px solid var(--accent)';
       el.style.display = 'inline-block';
       function type() {
+        if (gen !== draftTypingGen) return;
         if (i < msg.length) {
           el.textContent += msg.charAt(i);
           i++;
-          draftTypingTimer = setTimeout(type, 18 + Math.random() * 22);
+          setTimeout(type, 18 + Math.random() * 22);
         } else {
           // Blink cursor then stop
-          setTimeout(function() { el.style.borderRight = 'none'; }, 1500);
+          setTimeout(function() { if (gen === draftTypingGen) el.style.borderRight = 'none'; }, 1500);
         }
       }
-      setTimeout(type, 600);
+      setTimeout(function() { if (gen === draftTypingGen) type(); }, 600);
     }
 
     // Activity log pill auto-cycle with filtering

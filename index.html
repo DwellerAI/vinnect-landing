@@ -139,8 +139,8 @@
     }
     [data-theme="light"] body::before {
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(213,184,147,0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(111,77,56,0.02) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 0%, rgba(99,32,36,0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(99,32,36,0.02) 0%, transparent 40%);
     }
     [data-theme="light"] .noise-overlay {
       opacity: 0.03;
@@ -1944,6 +1944,16 @@
       var connectionDistance = 130;
       var mouseX = -1000, mouseY = -1000;
 
+      // Theme-adaptive particle color
+      var particleRGB = '213, 184, 147'; // tan (dark mode default)
+      function updateParticleColor() {
+        var theme = document.documentElement.getAttribute('data-theme');
+        particleRGB = theme === 'light' ? '99, 32, 36' : '213, 184, 147';
+      }
+      updateParticleColor();
+      // Watch for theme changes
+      new MutationObserver(updateParticleColor).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
       function resize() {
         var dpr = window.devicePixelRatio || 1;
         canvas.width = window.innerWidth * dpr;
@@ -2004,14 +2014,14 @@
           var alpha = p.brightness + mouseGlow;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius + mouseGlow * 2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(213, 184, 147, ' + Math.min(alpha, 1) + ')';
+          ctx.fillStyle = 'rgba(' + particleRGB + ', ' + Math.min(alpha, 1) + ')';
           ctx.fill();
 
           // Glow effect on brighter/closer nodes
           if (alpha > 0.5) {
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius + 4 + mouseGlow * 4, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(213, 184, 147, ' + (alpha * 0.15) + ')';
+            ctx.fillStyle = 'rgba(' + particleRGB + ', ' + (alpha * 0.15) + ')';
             ctx.fill();
           }
         }
@@ -2036,7 +2046,7 @@
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = 'rgba(213, 184, 147, ' + lineAlpha + ')';
+              ctx.strokeStyle = 'rgba(' + particleRGB + ', ' + lineAlpha + ')';
               ctx.lineWidth = 0.8;
               ctx.stroke();
             }
